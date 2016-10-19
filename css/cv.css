@@ -1,3 +1,4 @@
+@import url(fotorama.css);
 .clear {
 	clear: both;
 }
@@ -12,11 +13,9 @@
 		margin-left: -5px;
 		font-weight: 200;
 	}
-
 .last.block {
 	margin-bottom: 110px;
 }
-
 .horizontal_list {
 	margin: 0;
 	padding: 0;
@@ -32,7 +31,6 @@
 		padding-left: 0;
 		text-indent: 0;
 	}
-
 .horizontal_line{
 	margin: 34px 0 0 30px;
 	height: 26px;
@@ -78,12 +76,10 @@
 	}
 
 /* Main tags */
-
 body {
 	background: url(https://artybondar.github.io/img/dark.png) repeat;
 	margin: 0;
 }
-
 h1,h2,h3, h4 {
 	font-family: Helvetica, sans-serif;
 	font-weight: 300;
@@ -105,25 +101,21 @@ h1,h2,h3, h4 {
 		font-size: 18px;
 		font-weight: 400;
 	}
-
 blockquote {
 	font-style: italic;
 	margin: 25px 0;
 	padding-left: 20px;
 	border-left: 2px solid #8CBB87;
 }
-
 blockquote, p , a, li {
 	font-family: Helvetica, sans-serif;
 	font-weight: 300;
 	font-size: 15px;
 	color: #e4e3e8;
 }
-
 a:focus {
     outline: none;
 }
-
 ul {
     list-style: none;
     padding:0;
@@ -141,7 +133,6 @@ ul {
 	}
 
 /* Containers size */
-
 #main_container {
 	width: 960px;
 	margin: 0 auto;
@@ -182,7 +173,6 @@ ul {
 	}
 
 /* HEADER */
-
 .logotype_name{
 	text-transform: uppercase;
 	font-size: 32px;
@@ -195,7 +185,6 @@ ul {
 	font-size: 13px;
 	letter-spacing: 2px;
 }
-
 .download_print_buttons {
 	width: 225px;
 	height: 45px;
@@ -226,7 +215,6 @@ ul {
 			.download_print_buttons a:hover .icon {
 				color: #e4e3e8;
 			}
-
 .header_menu {
 	width: 699px;
 	margin-top: 40px;
@@ -247,7 +235,6 @@ ul {
 		}
 
 /* LEFT NAV */
-
 #left_nav h2 {
 	margin: 0;
 	font-size: 24px;
@@ -266,7 +253,6 @@ ul {
 		margin:10px;
 		background: url(https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAANZAAAAJGI3ODI5ZWJmLTNmYWMtNDY2ZS05ZjExLWEzMzZmYjEzY2JhMg.jpg) 100% /210px no-repeat;
 	}
-
 .hello_content,
 .contact_details_content {
 	margin-top: 25px;
@@ -284,7 +270,6 @@ ul {
 .contact_details_content p.purple{
 	margin-top: 25px;
 }
-
 .send_message_button,
 .special_button {
 	margin-top: 25px;
@@ -372,10 +357,8 @@ ul {
 }
 
 /* Profile Content */
-
 .profile_quote {
 	position: relative;
-	/* margin-left: 5px; */
 }
 	.profile_quote p {
 		font-size: 17px;
