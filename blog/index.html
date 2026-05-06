@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Arty Bondar</title>
+  <meta name="description" content="Blog by Arty Bondar — thoughts on web development, tech trends & programming." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080808; --surface: #111111; --border: #222222;
+      --accent: #c8ff00; --text: #f2f2f2; --muted: #777;
+      --font-display: 'Syne', sans-serif;
+      --font-serif: 'Instrument Serif', serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-display); overflow-x: hidden; cursor: none; }
+    .cursor { position: fixed; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); mix-blend-mode: difference; }
+    .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1.5px solid rgba(200,255,0,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: transform .1s ease-out; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); background-size: 200px; pointer-events: none; z-index: 1; opacity: .6; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); background: rgba(8,8,8,.8); }
+    .nav-logo { font-family: var(--font-mono); font-size: 13px; letter-spacing: .08em; color: var(--accent); text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+    .hero { padding: 180px 48px 80px; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 30% 50%, rgba(200,255,0,.04) 0%, transparent 65%); }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); }
+    .hero-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; position: relative; z-index: 2; }
+    .hero-title { font-size: clamp(56px, 8vw, 120px); font-weight: 800; line-height: .92; letter-spacing: -.03em; position: relative; z-index: 2; }
+    .hero-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--muted); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; position: relative; z-index: 2; }
+
+    .posts { padding: 80px 0 140px; }
+    .posts-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 48px; border-bottom: 1px solid var(--border); padding-bottom: 24px; }
+    .posts-count { font-family: var(--font-mono); font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+
+    .post-list { display: flex; flex-direction: column; gap: 0; }
+    .post-item { display: grid; grid-template-columns: 120px 1fr auto; gap: 40px; align-items: start; padding: 40px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: padding-left .3s; }
+    .post-item:first-child { border-top: 1px solid var(--border); }
+    .post-item:hover { padding-left: 20px; }
+    .post-num { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; color: var(--muted); padding-top: 6px; }
+    .post-body {}
+    .post-tags { display: flex; gap: 8px; margin-bottom: 14px; }
+    .post-tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; background: rgba(200,255,0,.07); color: var(--accent); }
+    .post-title { font-size: clamp(22px, 2.5vw, 32px); font-weight: 700; letter-spacing: -.02em; line-height: 1.15; margin-bottom: 12px; transition: color .2s; }
+    .post-item:hover .post-title { color: var(--accent); }
+    .post-excerpt { font-family: var(--font-mono); font-size: 13px; line-height: 1.7; color: var(--muted); max-width: 600px; }
+    .post-meta { text-align: right; }
+    .post-date { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; color: var(--muted); white-space: nowrap; }
+    .post-arrow { font-size: 20px; color: var(--accent); margin-top: 8px; transition: transform .2s; display: block; text-align: right; }
+    .post-item:hover .post-arrow { transform: translateX(4px); }
+
+    footer { padding: 32px 48px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
+    footer p { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: .08em; }
+    footer .accent { color: var(--accent); }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 140px 24px 60px; }
+      .container { padding: 0 24px; }
+      .posts-header { flex-direction: column; gap: 12px; }
+      .post-item { grid-template-columns: 1fr; gap: 12px; }
+      .post-num { display: none; }
+      .post-meta { display: flex; align-items: center; justify-content: space-between; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">AB.dev</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="index.html" class="active">Blog</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="container">
+      <p class="hero-tag">// Writing</p>
+      <h1 class="hero-title">Dev<br /><em>Blog</em></h1>
+    </div>
+  </div>
+
+  <section class="posts">
+    <div class="container">
+      <div class="posts-header reveal">
+        <h2 style="font-size:13px;font-family:var(--font-mono);letter-spacing:.15em;text-transform:uppercase;color:var(--muted)">Latest Articles</h2>
+        <span class="posts-count">01 post</span>
+      </div>
+      <div class="post-list">
+        <a href="../blog/programming-2026.html" class="post-item reveal">
+          <div class="post-num">001</div>
+          <div class="post-body">
+            <div class="post-tags">
+              <span class="post-tag">Trends</span>
+              <span class="post-tag">AI</span>
+              <span class="post-tag">2025–2026</span>
+            </div>
+            <div class="post-title">Programming Today: What's Actually Happening in 2025–2026</div>
+            <div class="post-excerpt">Python dominates AI, TypeScript took over GitHub, Rust stays beloved but niche, and AI tools now write 41% of all code. A grounded look at where the industry actually is — no hype, just data.</div>
+          </div>
+          <div class="post-meta">
+            <div class="post-date">May 2026</div>
+            <span class="post-arrow">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 <span class="accent">Arty Bondar</span>.</p>
+    <p><a href="../index.html" style="color:var(--muted);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;">← Back to portfolio</a></p>
+  </footer>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+    (function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+    const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>

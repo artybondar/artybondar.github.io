@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programming Today: What's Actually Happening in 2025–2026 — Arty Bondar</title>
+  <meta name="description" content="A data-driven look at where programming is in 2025–2026: languages, AI tools, and what's actually changing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080808; --surface: #111111; --border: #222222;
+      --accent: #c8ff00; --accent2: #ff5c00; --text: #f2f2f2; --muted: #777;
+      --font-display: 'Syne', sans-serif;
+      --font-serif: 'Instrument Serif', serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-display); overflow-x: hidden; cursor: none; }
+    .cursor { position: fixed; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); mix-blend-mode: difference; }
+    .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1.5px solid rgba(200,255,0,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: transform .1s ease-out; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); background-size: 200px; pointer-events: none; z-index: 1; opacity: .6; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); background: rgba(8,8,8,.85); }
+    .nav-logo { font-family: var(--font-mono); font-size: 13px; letter-spacing: .08em; color: var(--accent); text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+    /* ARTICLE HERO */
+    .article-hero { padding: 160px 48px 80px; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+    .article-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 80% 40%, rgba(200,255,0,.04) 0%, transparent 65%), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(255,92,0,.03) 0%, transparent 60%); }
+    .article-hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); }
+    .article-hero-inner { max-width: 900px; position: relative; z-index: 2; }
+    .breadcrumb { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; transition: color .2s; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb-sep { color: var(--border); }
+    .article-tags { display: flex; gap: 8px; margin-bottom: 24px; }
+    .article-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; padding: 5px 12px; background: rgba(200,255,0,.07); color: var(--accent); border: 1px solid rgba(200,255,0,.15); }
+    .article-title { font-size: clamp(36px, 5.5vw, 72px); font-weight: 800; line-height: 1.0; letter-spacing: -.03em; margin-bottom: 28px; }
+    .article-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
+    .article-meta { display: flex; align-items: center; gap: 32px; padding-top: 28px; border-top: 1px solid var(--border); }
+    .article-author { display: flex; align-items: center; gap: 14px; }
+    .author-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; color: var(--bg); flex-shrink: 0; }
+    .author-name { font-weight: 600; font-size: 14px; }
+    .author-role { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: .06em; margin-top: 2px; }
+    .meta-divider { width: 1px; height: 36px; background: var(--border); }
+    .meta-item { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: .08em; }
+    .meta-item strong { display: block; color: var(--text); font-size: 12px; margin-bottom: 2px; font-family: var(--font-display); font-weight: 600; }
+
+    /* ARTICLE LAYOUT */
+    .article-layout { display: grid; grid-template-columns: 1fr 280px; gap: 80px; max-width: 1200px; margin: 0 auto; padding: 80px 48px 140px; align-items: start; }
+
+    /* CONTENT */
+    .article-content {}
+
+    /* TOC sidebar */
+    .toc { position: sticky; top: 100px; }
+    .toc-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .toc-list li a { display: block; font-family: var(--font-mono); font-size: 12px; color: var(--muted); text-decoration: none; padding: 9px 0 9px 14px; border-left: 2px solid var(--border); transition: color .2s, border-color .2s; line-height: 1.4; }
+    .toc-list li a:hover, .toc-list li a.active { color: var(--accent); border-left-color: var(--accent); }
+    .toc-share { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border); }
+    .toc-share p { font-family: var(--font-mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .share-btns { display: flex; flex-direction: column; gap: 8px; }
+    .share-btn { font-family: var(--font-mono); font-size: 11px; padding: 10px 14px; border: 1px solid var(--border); color: var(--muted); text-decoration: none; transition: border-color .2s, color .2s; display: flex; align-items: center; gap: 8px; cursor: pointer; background: none; width: 100%; }
+    .share-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* PROSE */
+    .prose { max-width: 680px; }
+    .prose p { font-family: var(--font-mono); font-size: 15px; line-height: 1.9; color: #aaa; margin-bottom: 28px; }
+    .prose p strong { color: var(--text); font-weight: 500; }
+    .prose h2 { font-size: clamp(26px, 2.5vw, 36px); font-weight: 800; letter-spacing: -.02em; margin: 64px 0 20px; line-height: 1.1; }
+    .prose h2 em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
+    .prose h3 { font-size: 18px; font-weight: 700; letter-spacing: -.01em; margin: 36px 0 14px; color: var(--text); }
+    .prose .lead { font-family: var(--font-serif); font-style: italic; font-size: clamp(18px, 2vw, 22px); line-height: 1.65; color: var(--muted); margin-bottom: 48px; border-left: 2px solid var(--accent); padding-left: 24px; }
+    .prose blockquote { margin: 40px 0; padding: 28px 32px; background: var(--surface); border-left: 3px solid var(--accent); }
+    .prose blockquote p { color: var(--text); font-size: 16px; margin: 0; }
+    .prose blockquote cite { display: block; font-family: var(--font-mono); font-style: normal; font-size: 11px; color: var(--muted); letter-spacing: .08em; margin-top: 12px; }
+    .prose ul { margin: 0 0 28px 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .prose ul li { font-family: var(--font-mono); font-size: 14px; line-height: 1.7; color: #aaa; padding-left: 20px; position: relative; }
+    .prose ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 12px; }
+    .prose ul li strong { color: var(--text); font-weight: 500; }
+    .prose hr { border: none; border-top: 1px solid var(--border); margin: 56px 0; }
+
+    /* STAT CARDS */
+    .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: 40px 0; }
+    .stat-card { background: var(--surface); padding: 28px 24px; border: 1px solid var(--border); }
+    .stat-card .num { font-size: 40px; font-weight: 800; letter-spacing: -.03em; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+    .stat-card .lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); line-height: 1.5; }
+
+    /* LANG BAR CHART */
+    .lang-chart { margin: 40px 0; display: flex; flex-direction: column; gap: 14px; }
+    .lang-row { display: flex; align-items: center; gap: 14px; }
+    .lang-name { font-family: var(--font-mono); font-size: 12px; color: var(--text); width: 100px; flex-shrink: 0; letter-spacing: .04em; }
+    .lang-bar-wrap { flex: 1; background: var(--surface); height: 8px; border-radius: 0; overflow: hidden; }
+    .lang-bar { height: 100%; border-radius: 0; background: var(--accent); transition: width 1.2s cubic-bezier(.16,1,.3,1); width: 0; }
+    .lang-bar.orange { background: var(--accent2); }
+    .lang-bar.white { background: rgba(242,242,242,.5); }
+    .lang-pct { font-family: var(--font-mono); font-size: 11px; color: var(--muted); width: 44px; flex-shrink: 0; text-align: right; }
+
+    /* CALLOUT */
+    .callout { margin: 40px 0; padding: 28px 32px; border: 1px solid rgba(200,255,0,.2); background: rgba(200,255,0,.03); }
+    .callout-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .callout p { font-family: var(--font-mono); font-size: 14px; line-height: 1.7; color: #aaa; margin: 0; }
+    .callout p strong { color: var(--text); }
+
+    /* CONCLUSION */
+    .conclusion { margin-top: 64px; padding: 48px; background: var(--surface); border: 1px solid var(--border); }
+    .conclusion h2 { font-size: 24px; font-weight: 800; letter-spacing: -.02em; margin-bottom: 20px; }
+    .conclusion p { font-family: var(--font-mono); font-size: 14px; line-height: 1.8; color: #aaa; margin-bottom: 16px; }
+    .conclusion p:last-child { margin-bottom: 0; }
+
+    /* NEXT ARTICLE */
+    .next-article { margin-top: 64px; border-top: 1px solid var(--border); padding-top: 40px; }
+    .next-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .next-link { display: flex; align-items: center; justify-content: space-between; text-decoration: none; color: var(--text); padding: 20px 0; border-bottom: 1px solid var(--border); transition: padding-left .3s; }
+    .next-link:hover { padding-left: 12px; }
+    .next-link span { font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
+    .back-btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-decoration: none; border: 1px solid var(--border); padding: 12px 20px; transition: border-color .2s, color .2s; }
+    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer { padding: 32px 48px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
+    footer p { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: .08em; }
+    footer .accent { color: var(--accent); }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .article-hero { padding: 130px 24px 60px; }
+      .article-layout { grid-template-columns: 1fr; gap: 60px; padding: 60px 24px 100px; }
+      .toc { position: static; order: -1; }
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">AB.dev</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="index.html" class="active">Blog</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HERO -->
+  <header class="article-hero">
+    <div class="article-hero-bg"></div>
+    <div class="article-hero-grid"></div>
+    <div class="article-hero-inner">
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="index.html">Blog</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Article 001</span>
+      </div>
+      <div class="article-tags">
+        <span class="article-tag">Trends</span>
+        <span class="article-tag">AI Tools</span>
+        <span class="article-tag">2025–2026</span>
+      </div>
+      <h1 class="article-title">Programming Today:<br /><em>What's Actually Happening</em><br />in 2025–2026</h1>
+      <div class="article-meta">
+        <div class="article-author">
+          <div class="author-avatar">AB</div>
+          <div>
+            <div class="author-name">Arty Bondar</div>
+            <div class="author-role">Fullstack Developer</div>
+          </div>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item"><strong>May 2026</strong>Published</div>
+        <div class="meta-divider"></div>
+        <div class="meta-item"><strong>8 min</strong>Read time</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- LAYOUT -->
+  <div class="article-layout">
+    <!-- MAIN PROSE -->
+    <article class="article-content">
+      <div class="prose reveal">
+
+        <p class="lead">Every few years the industry resets the rules. Right now we're in one of those moments — not slowly, but all at once. This is a grounded, data-driven look at where programming actually is in 2025–2026, stripped of the marketing noise.</p>
+
+        <p>I've been in this industry for over eight years, through PHP monoliths, the JavaScript explosion, the containerization wave, and now this. Each era felt big. This one feels different — because the tool that's changing is the act of writing code itself.</p>
+
+        <hr />
+
+        <h2 id="languages">The Language <em>Landscape</em></h2>
+
+        <p>The rankings tell a clear story: Python won the AI era and dragged the whole industry with it. But the nuance is more interesting than a simple leaderboard.</p>
+
+        <p><strong>Python's rise is structural, not cyclical.</strong> According to the Stack Overflow Developer Survey 2025, Python saw a seven percentage point jump in adoption in a single year — the largest single-year gain of any major language ever recorded in that survey. It also surpassed JavaScript as the most-used language on GitHub, driven almost entirely by AI and data science activity.</p>
+
+        <div class="lang-chart" id="langChart">
+          <div class="lang-row"><span class="lang-name">Python</span><div class="lang-bar-wrap"><div class="lang-bar" data-w="72"></div></div><span class="lang-pct">~25%</span></div>
+          <div class="lang-row"><span class="lang-name">JavaScript</span><div class="lang-bar-wrap"><div class="lang-bar orange" data-w="66"></div></div><span class="lang-pct">~22%</span></div>
+          <div class="lang-row"><span class="lang-name">TypeScript</span><div class="lang-bar-wrap"><div class="lang-bar" data-w="56"></div></div><span class="lang-pct">~38%</span></div>
+          <div class="lang-row"><span class="lang-name">Java</span><div class="lang-bar-wrap"><div class="lang-bar white" data-w="40"></div></div><span class="lang-pct">~8.7%</span></div>
+          <div class="lang-row"><span class="lang-name">C#</span><div class="lang-bar-wrap"><div class="lang-bar white" data-w="36"></div></div><span class="lang-pct">~7.4%</span></div>
+          <div class="lang-row"><span class="lang-name">Rust</span><div class="lang-bar-wrap"><div class="lang-bar orange" data-w="22"></div></div><span class="lang-pct">72% ❤</span></div>
+        </div>
+        <p style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-top:-16px;margin-bottom:32px;">Sources: TIOBE Jan 2026, Stack Overflow Survey 2025. Rust % = admiration rating.</p>
+
+        <h3>TypeScript quietly took over</h3>
+        <p>While Python gets the headlines, TypeScript made the quieter, more permanent conquest of everyday web development. <strong>69% of developers now use TypeScript for large-scale web applications</strong>, and it replaced Java in GitHub's top three languages. The JavaScript ecosystem didn't die — it grew up.</p>
+
+        <h3>Rust: most loved, least hired</h3>
+        <p>For the tenth consecutive year, Rust topped the Stack Overflow "most admired" list at 72% approval. Amazon, Microsoft, and Cloudflare have integrated it into critical infrastructure. Yet corporate adoption still lags community enthusiasm — the steep learning curve keeps it a specialist tool. Rust job postings grew 35% year-over-year in 2025, which sounds impressive until you realize the base was small. This is a language for the long game.</p>
+
+        <h3>PHP isn't dead (stop saying that)</h3>
+        <p>Over 75% of websites that declare a server-side language still run PHP. Laravel modernized the ecosystem considerably, and an enormous volume of production systems need daily care. It may not be the default choice for greenfield work in 2026, but dismissing it is a luxury most of us can't afford.</p>
+
+        <hr />
+
+        <h2 id="ai">AI Tools: The <em>Real Numbers</em></h2>
+
+        <p>This is where things get genuinely complicated. The productivity claims are everywhere. The reality is more nuanced.</p>
+
+        <div class="stat-grid">
+          <div class="stat-card"><div class="num">41%</div><div class="lbl">of all code written in 2025 was AI-generated or assisted</div></div>
+          <div class="stat-card"><div class="num">84%</div><div class="lbl">of developers use or plan to use AI in their workflow</div></div>
+          <div class="stat-card"><div class="num">3.6h</div><div class="lbl">saved per developer per week on average (DX, 135k devs)</div></div>
+        </div>
+
+        <p>The top-line numbers look transformative. But a randomized controlled trial by METR, running 16 experienced developers through 246 tasks in 2025, found something surprising: <strong>experienced developers actually took 19% longer when using AI tools</strong>, largely due to review and correction time. The gains concentrated in junior developers and repetitive tasks.</p>
+
+        <div class="callout">
+          <div class="callout-label">// Key insight</div>
+          <p>AI tools are a <strong>force multiplier for experience</strong>, not a substitute for it. In well-structured teams they reduce incidents by 50%. In poorly structured ones, they create twice as many. The difference is engineering culture, not the tool.</p>
+        </div>
+
+        <p>A McKinsey study from February 2026 surveying 4,500 developers found that AI tools cut time on routine coding tasks by an average of 46%. That number is real — for boilerplate, test generation, and restructuring. For complex architectural decisions, novel problem-solving, and system design, the current tools still follow rather than lead.</p>
+
+        <blockquote>
+          <p>"For simpler tasks like restructuring the code base and writing tests, AI-powered workflows have achieved speedups of up to 90%. But gains are more modest for other tasks, and the disruption caused by overhauling existing processes often counteracts the increased coding speed."</p>
+          <cite>— Rob Witoff, Head of Platform, Coinbase · MIT Technology Review, 2026</cite>
+        </blockquote>
+
+        <h3>What this means for developers</h3>
+        <p>Job postings requiring experience with AI coding tools increased 340% between January 2025 and January 2026. Meanwhile, pure implementation roles — writing spec-to-code — declined 17%. The shift isn't elimination, it's elevation. The developers thriving are the ones who review and direct AI output, not the ones competing with it.</p>
+
+        <hr />
+
+        <h2 id="stack">The Modern <em>Stack</em></h2>
+
+        <p>Beyond languages, the infrastructure story of 2025–2026 is consolidation. The chaotic microservices boom is settling into pragmatic patterns.</p>
+
+        <ul>
+          <li><strong>PostgreSQL</strong> has been the most desired and admired database for three consecutive years in Stack Overflow surveys. Redis usage jumped 8% in a single year as applications demand in-memory caching at every layer.</li>
+          <li><strong>Docker + Kubernetes</strong> remain the baseline. The tooling debate has largely ended — the question now is who manages it (platform team vs cloud vs third-party).</li>
+          <li><strong>FastAPI (Python)</strong> saw a 5-point usage jump in 2025, the largest single shift in the web framework space. Python for APIs is no longer a surprising choice.</li>
+          <li><strong>Edge computing</strong> is maturing from concept to practice. Cloudflare Workers, Vercel Edge Functions, and Deno Deploy are production-grade. Reducing latency at the network edge is now a viable first-class strategy.</li>
+          <li><strong>WebAssembly (WASM)</strong> is quietly becoming serious infrastructure. Compiled Rust and Go modules running in the browser with near-native performance is no longer experimental.</li>
+        </ul>
+
+        <hr />
+
+        <h2 id="jobs">The Job <em>Market</em></h2>
+
+        <p>The feared mass displacement from AI has not materialized — yet. Global developer employment reached 28.7 million in 2025, a new high, with the US adding approximately 72,000 jobs. But the composition is shifting.</p>
+
+        <p><strong>What pays:</strong> Python leads US hiring demand with over 64,000 open positions. Go and Solidity command salaries above $150,000 in US markets. C# was TIOBE's language of the year in 2025 — Microsoft's .NET ecosystem matured significantly for cross-platform work, and enterprise demand reflects that.</p>
+
+        <p><strong>What's contracting:</strong> Junior implementation roles are under real pressure. A Stanford study found employment among software developers aged 22–25 fell nearly 20% between 2022 and 2025. Entry-level positions that were previously training grounds are being compressed by AI that can produce working first drafts instantly.</p>
+
+        <div class="callout">
+          <div class="callout-label">// For junior developers</div>
+          <p>The path forward is the same as always, accelerated: <strong>build real things, ship them, understand them deeply</strong>. The ability to review, debug, and improve AI-generated code is now a core skill, not a bonus one. Learn to evaluate output, not just produce it.</p>
+        </div>
+
+        <hr />
+
+        <h2 id="take">My <em>Take</em></h2>
+
+        <p>After eight years in this industry, the most dangerous thing I see isn't AI replacing developers. It's developers misreading which skills to compound.</p>
+
+        <p>The fundamentals — algorithms, data structures, system design, debugging, clear thinking — have never mattered more, because they're exactly what AI can't reliably do yet. AI is a brilliant autocomplete. The programmer's job is increasingly to ask the right questions, validate the answers, and understand deeply enough to know when the confident output is wrong.</p>
+
+        <p>The language and tool bets I'd make today: Python if you're near the AI/data space, TypeScript if you're building products for the web, Rust if you're doing systems work and have the patience for it. And SQL — always, everywhere, non-negotiable.</p>
+
+        <div class="conclusion">
+          <h2>Summary</h2>
+          <p><strong>Python</strong> dominates AI/data and is now the top language by GitHub activity. <strong>TypeScript</strong> is the default for serious web development. <strong>Rust</strong> is the most admired language but still a specialist tool.</p>
+          <p><strong>AI tools</strong> write 41% of code and save ~3.6h/week on average, but experienced developers need to review carefully — gains are real but uneven. The job market is growing, but the nature of roles is shifting upward.</p>
+          <p>The developers who thrive in 2026 are the ones who understand the machine well enough to direct it — not just the ones who can prompt it.</p>
+        </div>
+
+        <div class="next-article">
+          <p class="next-label">// More articles coming</p>
+          <a href="index.html" class="back-btn">← Back to Blog</a>
+        </div>
+
+      </div><!-- .prose -->
+    </article>
+
+    <!-- SIDEBAR TOC -->
+    <aside class="toc reveal">
+      <p class="toc-label">// Contents</p>
+      <ul class="toc-list">
+        <li><a href="#languages" id="toc-languages">Language Landscape</a></li>
+        <li><a href="#ai" id="toc-ai">AI Tools: Real Numbers</a></li>
+        <li><a href="#stack" id="toc-stack">The Modern Stack</a></li>
+        <li><a href="#jobs" id="toc-jobs">The Job Market</a></li>
+        <li><a href="#take" id="toc-take">My Take</a></li>
+      </ul>
+      <div class="toc-share">
+        <p>// Share</p>
+        <div class="share-btns">
+          <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='✓ Copied!'">
+            🔗 Copy link
+          </button>
+          <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://artybondar.github.io/blog/programming-today.html" target="_blank">in LinkedIn</a>
+          <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://artybondar.github.io/blog/programming-today.html&text=Programming in 2025–2026: what's actually happening — by @artybondar" target="_blank">𝕏 Twitter</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <p>© 2026 <span class="accent">Arty Bondar</span>.</p>
+    <p><a href="index.html" style="color:var(--muted);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;">← Blog</a></p>
+  </footer>
+
+  <script>
+    // Cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+    (function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+
+    // Reveal
+    const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Animate bars when visible
+    const chartObs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.querySelectorAll('.lang-bar').forEach(bar=>{
+            const w = bar.dataset.w;
+            setTimeout(()=>{bar.style.width=w+'%';},100);
+          });
+          chartObs.unobserve(e.target);
+        }
+      });
+    },{threshold:.3});
+    const lc=document.getElementById('langChart');
+    if(lc) chartObs.observe(lc);
+
+    // Active TOC on scroll
+    const sections = ['languages','ai','stack','jobs','take'];
+    const tocLinks = sections.map(id=>document.getElementById('toc-'+id));
+    const sectionEls = sections.map(id=>document.getElementById(id));
+    window.addEventListener('scroll',()=>{
+      let current=0;
+      sectionEls.forEach((el,i)=>{if(el&&el.getBoundingClientRect().top<160)current=i;});
+      tocLinks.forEach((l,i)=>{if(l)l.classList.toggle('active',i===current);});
+    });
+  </script>
+</body>
+</html>
