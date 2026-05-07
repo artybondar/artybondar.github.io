@@ -3,49 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2048</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>2048 — Arty Bondar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <style>
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(4, 1fr);
-            gap: 10px;
-            background-color: #bbada0;
-            padding: 10px;
-            border-radius: 6px;
-            width: 400px;
-            height: 400px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .cell {
-            border-radius: 3px;
+        :root {
+            --bg: #080808;
+            --surface: #111111;
+            --border: #222222;
+            --accent: #c8ff00;
+            --accent2: #ff5c00;
+            --text: #f2f2f2;
+            --muted: #777;
+            --font-display: 'Syne', sans-serif;
+            --font-serif: 'Instrument Serif', serif;
+            --font-mono: 'IBM Plex Mono', monospace;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-display);
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            font-size: 36px;
-            font-weight: bold;
-            color: #776e65;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        .empty-cell {
-            background-color: #cdc1b4;
-            opacity: 0.7;
-            border: 2px dashed rgba(0, 0, 0, 0.1);
+        /* Noise overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            background-size: 200px;
+            pointer-events: none;
+            z-index: 1;
+            opacity: .6;
+        }
+
+        /* Main container */
+        .game-container {
+            position: relative;
+            z-index: 2;
+            padding: 40px;
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: 64px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        h1 em {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent);
         }
 
         .score-panel {
-            margin-bottom: 20px;
-            font-size: 24px;
-            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 24px;
+            margin-bottom: 24px;
+            padding: 16px 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .score-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .score-value {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            background-color: rgba(187, 173, 160, 0.15);
+            padding: 16px;
+            border-radius: 20px;
+            width: 500px;
+            height: 500px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(200, 255, 0, 0.15);
+        }
+
+        .cell {
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: var(--font-display);
+            font-size: 42px;
+            font-weight: 800;
+            transition: all 0.15s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .empty-cell {
+            background-color: rgba(205, 193, 180, 0.1);
+            border: 2px dashed rgba(200, 255, 0, 0.2);
+        }
+
+        .instruction {
+            margin-top: 24px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .restart-btn {
+            margin-top: 24px;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 12px 28px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: 40px;
+        }
+
+        .restart-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Custom cursor (optional subtle) */
+        @media (min-width: 768px) {
+            .game-container {
+                cursor: none;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .game-container {
+                padding: 20px;
+                margin: 20px;
+            }
+            .grid {
+                width: 320px;
+                height: 320px;
+                gap: 8px;
+                padding: 12px;
+            }
+            .cell {
+                font-size: 28px;
+            }
+            h1 {
+                font-size: 48px;
+            }
+        }
+
+        /* Animation for new tiles */
+        @keyframes pop {
+            0% { transform: scale(0); opacity: 0; }
+            80% { transform: scale(1.1); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .cell:not(.empty-cell) {
+            animation: pop 0.2s ease-out;
         }
     </style>
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-    <h1 class="text-3xl font-bold mb-4">2048</h1>
-    <div class="score-panel">Счёт: <span id="score">0</span></div>
-    <div class="grid" id="grid"></div>
-    <p class="mt-4 text-gray-600">Используйте стрелки для перемещения плиток.</p>
+<body>
+    <div class="game-container">
+        <h1>2<span style="color:var(--accent)">0</span>4<em>8</em></h1>
+        <div class="score-panel">
+            <span class="score-label">СЧЁТ</span>
+            <span class="score-value" id="score">0</span>
+        </div>
+        <div class="grid" id="grid"></div>
+        <div style="display: flex; justify-content: center; gap: 16px;">
+            <button class="restart-btn" id="restartBtn">⟳ Новая игра</button>
+        </div>
+        <p class="instruction">← ↑ ↓ → &nbsp;&nbsp;|&nbsp;&nbsp; используй стрелки</p>
+    </div>
 
     <script>
         const grid = document.getElementById('grid');
@@ -89,26 +261,27 @@
                     cell.className = `cell ${cellValue === 0 ? 'empty-cell' : ''}`;
                     cell.textContent = cellValue !== 0 ? cellValue : '';
                     cell.style.backgroundColor = getCellColor(cellValue);
+                    cell.style.color = cellValue > 4 ? 'white' : '#776e65';
                     grid.appendChild(cell);
                 }
             }
         }
 
-        // Определение цвета плитки в зависимости от её значения
+        // Определение цвета плитки в стиле портфолио
         function getCellColor(value) {
             const colors = {
                 0: 'transparent',
-                2: '#eee4da',
-                4: '#ede0c8',
-                8: '#f2b179',
-                16: '#f59563',
-                32: '#f67c5f',
-                64: '#f65e3b',
-                128: '#edcf72',
-                256: '#edcc61',
-                512: '#edc850',
-                1024: '#edc53f',
-                2048: '#edc22e',
+                2: '#2a2a2a',
+                4: '#1e1e2a',
+                8: '#2a1e3a',
+                16: '#3a1e2a',
+                32: '#4a1a2a',
+                64: '#5a1525',
+                128: '#6a1c3a',
+                256: '#7a2045',
+                512: '#8a2450',
+                1024: '#9a2a5a',
+                2048: '#c8ff00',
             };
             return colors[value] || '#3c3a32';
         }
@@ -266,22 +439,32 @@
         document.addEventListener('keydown', (e) => {
             switch (e.key) {
                 case 'ArrowUp':
+                    e.preventDefault();
                     handleMove('up');
                     break;
                 case 'ArrowDown':
+                    e.preventDefault();
                     handleMove('down');
                     break;
                 case 'ArrowLeft':
+                    e.preventDefault();
                     handleMove('left');
                     break;
                 case 'ArrowRight':
+                    e.preventDefault();
                     handleMove('right');
                     break;
             }
         });
 
+        // Кнопка рестарта
+        document.getElementById('restartBtn').addEventListener('click', () => {
+            initGame();
+        });
+
         // Запуск игры
         initGame();
     </script>
+    <!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter40299739 = new Ya.Metrika({ id:40299739, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/40299739" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 </body>
 </html>
