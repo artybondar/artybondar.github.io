@@ -1,0 +1,19 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow2" cx="50%" cy="0%" r="75%">
+      <stop offset="0%" stop-color="#F8F0E5"/>
+      <stop offset="100%" stop-color="#F3ECE2"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+  <rect x="0" y="0" width="1200" height="630" fill="none" stroke="#D8C9B5" stroke-width="1"/>
+
+  <text x="600" y="220" text-anchor="middle" font-family="DejaVu Sans" font-size="24" fill="#9C4F63" letter-spacing="6">ЛИЧНЫЙ ПУТЬ</text>
+
+  <text x="600" y="330" text-anchor="middle" font-family="DejaVu Serif" font-size="90" fill="#33232E">Женский</text>
+  <text x="600" y="420" text-anchor="middle" font-family="DejaVu Serif" font-style="italic" font-size="90" fill="#9C4F63">путь</text>
+
+  <text x="600" y="500" text-anchor="middle" font-family="DejaVu Sans" font-size="24" fill="#6B5A63">Мария Воинкова — без спешки и чужих сценариев</text>
+
+  <line x1="500" y1="540" x2="700" y2="540" stroke="#B98A4E" stroke-width="1.5"/>
+</svg>

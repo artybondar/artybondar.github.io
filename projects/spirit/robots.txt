@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://duhovnostbezilluzii.github.io/sitemap.xml
