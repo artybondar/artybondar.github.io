@@ -112,201 +112,292 @@
   <!-- MENU -->
   <section class="section" id="menu">
     <div class="menu-section reveal">
-      <div class="section-header">
-        <div class="section-label">Меню</div>
-        <h2 class="section-title">Что мы предлагаем</h2>
-        <p class="section-subtitle">Кофе, чай, пицца на закваске, десерты и специальное меню для детей. Любой кофейный напиток может быть приготовлен без кафеина.</p>
+  <div class="section-header">
+    <div class="section-label">Меню</div>
+    <h2 class="section-title">Что мы предлагаем</h2>
+    <p class="section-subtitle">Завтраки, обеды, ужины — всё приготовлено с заботой. Безглютеновые опции, веганские блюда и детское меню.</p>
+  </div>
+
+  <div class="menu-tabs">
+    <button class="menu-tab active" onclick="filterMenu('breakfast', this)">Завтраки</button>
+    <button class="menu-tab" onclick="filterMenu('toast', this)">Тосты</button>
+    <button class="menu-tab" onclick="filterMenu('hot', this)">Горячее</button>
+    <button class="menu-tab" onclick="filterMenu('pizza', this)">Пицца</button>
+    <button class="menu-tab" onclick="filterMenu('rolls', this)">Роллы</button>
+    <button class="menu-tab" onclick="filterMenu('soup', this)">Супы</button>
+    <button class="menu-tab" onclick="filterMenu('salad', this)">Салаты</button>
+    <button class="menu-tab" onclick="filterMenu('snack', this)">Закуски</button>
+    <button class="menu-tab" onclick="filterMenu('dessert', this)">Десерты</button>
+    <button class="menu-tab" onclick="filterMenu('kids', this)">Детское</button>
+  </div>
+
+  <div class="menu-grid" id="menuGrid">
+    <!-- ЗАВТРАКИ -->
+    <div class="menu-card" data-category="breakfast">
+      <div class="menu-card-header">
+        <h3>Кокосовые мини-панкейки</h3>
+        <span class="menu-card-price">630 ₽</span>
       </div>
-
-      <div class="menu-tabs">
-        <button class="menu-tab active" onclick="filterMenu('coffee', this)">Кофе</button>
-        <button class="menu-tab" onclick="filterMenu('tea', this)">Чай</button>
-        <button class="menu-tab" onclick="filterMenu('iced', this)">Со льдом</button>
-        <button class="menu-tab" onclick="filterMenu('pizza', this)">Пицца</button>
-        <button class="menu-tab" onclick="filterMenu('dessert', this)">Десерты</button>
-        <button class="menu-tab" onclick="filterMenu('kids', this)">Дети ЯНГ</button>
-      </div>
-
-      <div class="menu-grid" id="menuGrid">
-        <!-- Coffee -->
-        <div class="menu-card" data-category="coffee">
-          <div class="menu-card-header">
-            <h3>Эспрессо</h3>
-            <span class="menu-card-price">от 120 ₽</span>
-          </div>
-          <p>Классический итальянский кофе. Доступен без кофеина.</p>
-        </div>
-        <div class="menu-card" data-category="coffee">
-          <div class="menu-card-header">
-            <h3>Американо</h3>
-            <span class="menu-card-price">от 150 ₽</span>
-          </div>
-          <p>Эспрессо с добавлением горячей воды. Мягкий вкус.</p>
-        </div>
-        <div class="menu-card" data-category="coffee">
-          <div class="menu-card-header">
-            <h3>Капучино</h3>
-            <span class="menu-card-price">от 180 ₽</span>
-          </div>
-          <p>Эспрессо, молоко и нежная молочная пенка. Классика.</p>
-        </div>
-        <div class="menu-card" data-category="coffee">
-          <div class="menu-card-header">
-            <h3>Латте</h3>
-            <span class="menu-card-price">от 190 ₽</span>
-          </div>
-          <p>Мягкий кофе с большим количеством молока.</p>
-        </div>
-        <div class="menu-card" data-category="coffee">
-          <div class="menu-card-header">
-            <h3>Флэт Уайт</h3>
-            <span class="menu-card-price">от 200 ₽</span>
-          </div>
-          <p>Двойной эспрессо с микропенкой. Насыщенный вкус.</p>
-        </div>
-        <div class="menu-card" data-category="coffee">
-          <div class="menu-card-header">
-            <h3>Раф</h3>
-            <span class="menu-card-price">от 220 ₽</span>
-          </div>
-          <p>Кофе со сливками и ванильным сахаром. Нежный и сладкий.</p>
-        </div>
-
-        <!-- Tea -->
-        <div class="menu-card" data-category="tea" style="display:none">
-          <div class="menu-card-header">
-            <h3>Чёрный чай</h3>
-            <span class="menu-card-price">от 120 ₽</span>
-          </div>
-          <p>Классический чёрный чай. Можно с молоком.</p>
-        </div>
-        <div class="menu-card" data-category="tea" style="display:none">
-          <div class="menu-card-header">
-            <h3>Зелёный чай</h3>
-            <span class="menu-card-price">от 120 ₽</span>
-          </div>
-          <p>Свежий и лёгкий зелёный чай.</p>
-        </div>
-        <div class="menu-card" data-category="tea" style="display:none">
-          <div class="menu-card-header">
-            <h3>Травяной чай</h3>
-            <span class="menu-card-price">от 130 ₽</span>
-          </div>
-          <p>Сбор трав и цветов. Без кофеина.</p>
-        </div>
-        <div class="menu-card" data-category="tea" style="display:none">
-          <div class="menu-card-header">
-            <h3>Матча латте</h3>
-            <span class="menu-card-price">от 250 ₽</span>
-          </div>
-          <p>Японский зелёный чай матча с молоком.</p>
-        </div>
-
-        <!-- Iced -->
-        <div class="menu-card" data-category="iced" style="display:none">
-          <div class="menu-card-header">
-            <h3>Айс латте</h3>
-            <span class="menu-card-price">от 220 ₽</span>
-          </div>
-          <p>Охлаждённый латте со льдом. Освежающий.</p>
-          <span class="menu-card-tag tag-iced">Со льдом</span>
-        </div>
-        <div class="menu-card" data-category="iced" style="display:none">
-          <div class="menu-card-header">
-            <h3>Холодный кофе</h3>
-            <span class="menu-card-price">от 200 ₽</span>
-          </div>
-          <p>Заваренный холодным способом. Мягкий и сладкий.</p>
-          <span class="menu-card-tag tag-iced">Со льдом</span>
-        </div>
-        <div class="menu-card" data-category="iced" style="display:none">
-          <div class="menu-card-header">
-            <h3>Лимонад</h3>
-            <span class="menu-card-price">от 180 ₽</span>
-          </div>
-          <p>Домашний лимонад с мятой и лимоном.</p>
-          <span class="menu-card-tag tag-iced">Со льдом</span>
-        </div>
-
-        <!-- Pizza -->
-        <div class="menu-card" data-category="pizza" style="display:none">
-          <div class="menu-card-header">
-            <h3>Маргарита</h3>
-            <span class="menu-card-price">от 450 ₽</span>
-          </div>
-          <p>Томатный соус, моцарелла, базилик. 32 см.</p>
-          <span class="menu-card-tag tag-hot">С 12:00</span>
-        </div>
-        <div class="menu-card" data-category="pizza" style="display:none">
-          <div class="menu-card-header">
-            <h3>Пепперони</h3>
-            <span class="menu-card-price">от 520 ₽</span>
-          </div>
-          <p>Томатный соус, моцарелла, пепперони. 32 см.</p>
-          <span class="menu-card-tag tag-hot">С 12:00</span>
-        </div>
-        <div class="menu-card" data-category="pizza" style="display:none">
-          <div class="menu-card-header">
-            <h3>Веганская пицца</h3>
-            <span class="menu-card-price">от 480 ₽</span>
-          </div>
-          <p>Томатный соус, овощи, веганский сыр. Без молока и яиц.</p>
-          <span class="menu-card-tag tag-vegan">Веган</span>
-        </div>
-
-        <!-- Desserts -->
-        <div class="menu-card" data-category="dessert" style="display:none">
-          <div class="menu-card-header">
-            <h3>Чизкейк</h3>
-            <span class="menu-card-price">от 250 ₽</span>
-          </div>
-          <p>Нежный чизкейк с ягодным соусом.</p>
-          <span class="menu-card-tag tag-sweet">Сладкое</span>
-        </div>
-        <div class="menu-card" data-category="dessert" style="display:none">
-          <div class="menu-card-header">
-            <h3>Тирамису</h3>
-            <span class="menu-card-price">от 280 ₽</span>
-          </div>
-          <p>Классический итальянский десерт с кофе и маскарпоне.</p>
-          <span class="menu-card-tag tag-sweet">Сладкое</span>
-        </div>
-        <div class="menu-card" data-category="dessert" style="display:none">
-          <div class="menu-card-header">
-            <h3>Веганский десерт</h3>
-            <span class="menu-card-price">от 260 ₽</span>
-          </div>
-          <p>Без молока и яиц. Натуральные ингредиенты.</p>
-          <span class="menu-card-tag tag-vegan">Веган</span>
-        </div>
-
-        <!-- Kids -->
-        <div class="menu-card" data-category="kids" style="display:none">
-          <div class="menu-card-header">
-            <h3>Детский латте</h3>
-            <span class="menu-card-price">от 150 ₽</span>
-          </div>
-          <p>Молоко с лёгким вкусом карамели. Без кофеина.</p>
-          <span class="menu-card-tag tag-kids">Детское</span>
-        </div>
-        <div class="menu-card" data-category="kids" style="display:none">
-          <div class="menu-card-header">
-            <h3>Горячий шоколад</h3>
-            <span class="menu-card-price">от 180 ₽</span>
-          </div>
-          <p>Насыщенный горячий шоколад с маршмеллоу.</p>
-          <span class="menu-card-tag tag-kids">Детское</span>
-        </div>
-        <div class="menu-card" data-category="kids" style="display:none">
-          <div class="menu-card-header">
-            <h3>Детская пицца</h3>
-            <span class="menu-card-price">от 350 ₽</span>
-          </div>
-          <p>Маленькая пицца с любимыми начинками.</p>
-          <span class="menu-card-tag tag-kids">Детское</span>
-        </div>
-      </div>
+      <p>С грушей и кокосовым крем-брюле.</p>
     </div>
+    <div class="menu-card" data-category="breakfast">
+      <div class="menu-card-header">
+        <h3>Не сырники из миндальной рикотты</h3>
+        <span class="menu-card-price">650 ₽</span>
+      </div>
+      <p>С кешью-сметаной и вареньем.</p>
+    </div>
+    <div class="menu-card" data-category="breakfast">
+      <div class="menu-card-header">
+        <h3>Шоколадная гранола с вишней и пеканом</h3>
+        <span class="menu-card-price">590 ₽</span>
+      </div>
+      <p>Авторская гранола из безглютеновых овсяных хлопьев. С кокосовым йогуртом собственной ферментации.</p>
+    </div>
+    <div class="menu-card" data-category="breakfast">
+      <div class="menu-card-header">
+        <h3>Nut-free гранола с кокосовым йогуртом</h3>
+        <span class="menu-card-price">590 ₽</span>
+      </div>
+      <p>Авторская гранола из безглютеновых овсяных хлопьев. С кокосовым йогуртом собственной ферментации.</p>
+    </div>
+    <div class="menu-card" data-category="breakfast">
+      <div class="menu-card-header">
+        <h3>Шакшука с соусом наполи</h3>
+        <span class="menu-card-price">720 ₽</span>
+      </div>
+      <p>С мягким козьим сыром.</p>
+    </div>
+    <div class="menu-card" data-category="breakfast">
+      <div class="menu-card-header">
+        <h3>Зелёный омлет с кабачком-гриль</h3>
+        <span class="menu-card-price">710 ₽</span>
+      </div>
+      <p>С микрозеленью гороха и выдержанным козьим сыром.</p>
+    </div>
+    <div class="menu-card" data-category="breakfast">
+      <div class="menu-card-header">
+        <h3>Омлет с печёным перцем</h3>
+        <span class="menu-card-price">710 ₽</span>
+      </div>
+      <p>С микрозеленью гороха и выдержанным козьим сыром.</p>
+    </div>
+    <div class="menu-card" data-category="breakfast">
+      <div class="menu-card-header">
+        <h3>Овсяная каша солёная карамель</h3>
+        <span class="menu-card-price">630 ₽</span>
+      </div>
+      <p>Безглютеновые овсяные хлопья на натуральном кокосовом молоке.</p>
+    </div>
+
+    <!-- ТОСТЫ -->
+    <div class="menu-card" data-category="toast" style="display:none">
+      <div class="menu-card-header">
+        <h3>Тост со скрэмблом</h3>
+        <span class="menu-card-price">880 ₽</span>
+      </div>
+      <p>С креветками и мятым авокадо. Хлеб на закваске на выбор: тартин, гречневый или ржаной.</p>
+    </div>
+    <div class="menu-card" data-category="toast" style="display:none">
+      <div class="menu-card-header">
+        <h3>Тост с мятым авокадо</h3>
+        <span class="menu-card-price">710 ₽</span>
+      </div>
+      <p>Хлеб на закваске на выбор: тартин, гречневый или ржаной.</p>
+    </div>
+    <div class="menu-card" data-category="toast" style="display:none">
+      <div class="menu-card-header">
+        <h3>Тост с мятым авокадо и лососем</h3>
+        <span class="menu-card-price">930 ₽</span>
+      </div>
+      <p>Хлеб на закваске на выбор: тартин, гречневый или ржаной.</p>
+    </div>
+    <div class="menu-card" data-category="toast" style="display:none">
+      <div class="menu-card-header">
+        <h3>Тост с хумусом, авокадо и креветками</h3>
+        <span class="menu-card-price">750 ₽</span>
+      </div>
+      <p>Собственный хумус из белой фасоли. Хлеб на закваске на выбор.</p>
+    </div>
+    <div class="menu-card" data-category="toast" style="display:none">
+      <div class="menu-card-header">
+        <h3>Тост с хумусом, томатами черри и зелёным маслом</h3>
+        <span class="menu-card-price">670 ₽</span>
+      </div>
+      <p>Собственный хумус из белой фасоли. Хлеб на закваске на выбор.</p>
+    </div>
+
+    <!-- ГОРЯЧЕЕ -->
+    <div class="menu-card" data-category="hot" style="display:none">
+      <div class="menu-card-header">
+        <h3>Овощные оладьи с кешью-сметаной</h3>
+        <span class="menu-card-price">690 ₽</span>
+      </div>
+      <p>Из болгарского перца, лука порей, кабачка и моркови.</p>
+      <span class="menu-card-tag tag-vegan">Веган</span>
+    </div>
+    <div class="menu-card" data-category="hot" style="display:none">
+      <div class="menu-card-header">
+        <h3>Паста с форелью / креветками</h3>
+        <span class="menu-card-price">990 ₽</span>
+      </div>
+      <p>Безглютеновые или классические пенне на выбор. С лимонным кешью-соусом и морепродуктами.</p>
+    </div>
+    <div class="menu-card" data-category="hot" style="display:none">
+      <div class="menu-card-header">
+        <h3>Стейк форели с томатной сальсой</h3>
+        <span class="menu-card-price">1 090 ₽</span>
+      </div>
+      <p>Филе красной рыбы с мелко нарезанными томатами и красным луком в оливковом масле.</p>
+    </div>
+    <div class="menu-card" data-category="hot" style="display:none">
+      <div class="menu-card-header">
+        <h3>Паста помодорро</h3>
+        <span class="menu-card-price">470 ₽</span>
+      </div>
+      <p>Классические или безглютеновые пенне на выбор.</p>
+    </div>
+
+    <!-- ПИЦЦА -->
+    <div class="menu-card" data-category="pizza" style="display:none">
+      <div class="menu-card-header">
+        <h3>Пицца с печёным перцем</h3>
+        <span class="menu-card-price">1 490 ₽</span>
+      </div>
+      <p>32 см с козьим сыром и вялеными томатами. Тесто на пшеничной закваске собственного приготовления.</p>
+    </div>
+    <div class="menu-card" data-category="pizza" style="display:none">
+      <div class="menu-card-header">
+        <h3>Маринара с соусом наполи и томатами черри</h3>
+        <span class="menu-card-price">990 ₽</span>
+      </div>
+      <p>32 см с классическим томатным соусом. Тесто на пшеничной закваске.</p>
+    </div>
+    <div class="menu-card" data-category="pizza" style="display:none">
+      <div class="menu-card-header">
+        <h3>Пицца с авокадо и кабачком-гриль</h3>
+        <span class="menu-card-price">890 ₽</span>
+      </div>
+      <p>32 см с лимонным кешью-соусом и сливочным авокадо. Тесто на пшеничной закваске.</p>
+      <span class="menu-card-tag tag-vegan">Веган</span>
+    </div>
+
+    <!-- РОЛЛЫ -->
+    <div class="menu-card" data-category="rolls" style="display:none">
+      <div class="menu-card-header">
+        <h3>Тёплый ролл с печёным перцем</h3>
+        <span class="menu-card-price">970 ₽</span>
+      </div>
+      <p>С соусом из печёного перца и шпинатом.</p>
+    </div>
+    <div class="menu-card" data-category="rolls" style="display:none">
+      <div class="menu-card-header">
+        <h3>Детокс ролл с креветками</h3>
+        <span class="menu-card-price">990 ₽</span>
+      </div>
+      <p>С кабачком-гриль, шпинатом и зелёным соусом.</p>
+    </div>
+    <div class="menu-card" data-category="rolls" style="display:none">
+      <div class="menu-card-header">
+        <h3>Ролл с хумусом, авокадо и огурцом</h3>
+        <span class="menu-card-price">830 ₽</span>
+      </div>
+      <p>Со шпинатом и зелёным маслом в бездрожжевом лаваше.</p>
+      <span class="menu-card-tag tag-vegan">Веган</span>
+    </div>
+
+    <!-- СУПЫ -->
+    <div class="menu-card" data-category="soup" style="display:none">
+      <div class="menu-card-header">
+        <h3>Минестроне с форелью</h3>
+        <span class="menu-card-price">990 ₽</span>
+      </div>
+      <p>С форелью, грибами и бататом.</p>
+    </div>
+    <div class="menu-card" data-category="soup" style="display:none">
+      <div class="menu-card-header">
+        <h3>Горячий томатный крем-суп</h3>
+        <span class="menu-card-price">790 ₽</span>
+      </div>
+      <p>Классический томатный суп. Подаётся с сальсой и зелёным маслом.</p>
+    </div>
+    <div class="menu-card" data-category="soup" style="display:none">
+      <div class="menu-card-header">
+        <h3>Холодный зелёный гаспачо</h3>
+        <span class="menu-card-price">790 ₽</span>
+      </div>
+      <p>Освежающий суп с авокадо, шпинатом и зелёным яблоком.</p>
+    </div>
+
+    <!-- САЛАТЫ -->
+    <div class="menu-card" data-category="salad" style="display:none">
+      <div class="menu-card-header">
+        <h3>Зелёный детокс салат с креветками</h3>
+        <span class="menu-card-price">990 ₽</span>
+      </div>
+      <p>Микс зелени с креветками и лёгким лимонным дрессингом.</p>
+    </div>
+    <div class="menu-card" data-category="salad" style="display:none">
+      <div class="menu-card-header">
+        <h3>Тёплый салат с бататом-гриль</h3>
+        <span class="menu-card-price">830 ₽</span>
+      </div>
+      <p>Сытный салат с бататом, азербайджанскими томатами и авокадо.</p>
+    </div>
+
+    <!-- ЗАКУСКИ -->
+    <div class="menu-card" data-category="snack" style="display:none">
+      <div class="menu-card-header">
+        <h3>Хумус с овощными палочками</h3>
+        <span class="menu-card-price">450 ₽</span>
+      </div>
+      <p>Лёгкий хумус из белой фасоли. Подаётся с палочками моркови и сельдерея.</p>
+      <span class="menu-card-tag tag-vegan">Веган</span>
+    </div>
+
+    <!-- ДЕСЕРТЫ -->
+    <div class="menu-card" data-category="dessert" style="display:none">
+      <div class="menu-card-header">
+        <h3>Вишнёвый крамбл</h3>
+        <span class="menu-card-price">540 ₽</span>
+      </div>
+      <p>Крошка из безглютеновых овсяных хлопьев.</p>
+    </div>
+    <div class="menu-card" data-category="dessert" style="display:none">
+      <div class="menu-card-header">
+        <h3>Чиа-пудинг с nut-free гранолой</h3>
+        <span class="menu-card-price">500 ₽</span>
+      </div>
+      <p>С ежевикой и сиропом топинамбура. Также доступен с манго и кокосовой стружкой.</p>
+    </div>
+
+    <!-- ДЕТСКОЕ -->
+    <div class="menu-card" data-category="kids" style="display:none">
+      <div class="menu-card-header">
+        <h3>Пицца маринара-мини</h3>
+        <span class="menu-card-price">550 ₽</span>
+      </div>
+      <p>24 см с классическим томатным соусом. Тесто на пшеничной закваске.</p>
+      <span class="menu-card-tag tag-kids">Детское</span>
+    </div>
+    <div class="menu-card" data-category="kids" style="display:none">
+      <div class="menu-card-header">
+        <h3>Пицца с печёным перцем мини</h3>
+        <span class="menu-card-price">770 ₽</span>
+      </div>
+      <p>24 см с козьим сыром и вялеными томатами. Тесто на пшеничной закваске.</p>
+      <span class="menu-card-tag tag-kids">Детское</span>
+    </div>
+    <div class="menu-card" data-category="kids" style="display:none">
+      <div class="menu-card-header">
+        <h3>Пицца с авокадо и кабачком мини</h3>
+        <span class="menu-card-price">530 ₽</span>
+      </div>
+      <p>24 см с лимонным кешью-соусом и сливочным авокадо. Тесто на пшеничной закваске.</p>
+      <span class="menu-card-tag tag-kids">Детское</span>
+    </div>
+  </div>
+  </div>
   </section>
 
   <!-- GALLERY -->
