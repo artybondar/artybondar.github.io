@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YNG Coffee — Кафе на Спортивной 2/1</title>
+  <meta name="description" content="YNG Coffee — современное кафе на Спортивной 2/1 в Санкт-Петербурге. Кофе, чай, пицца на закваске, десерты. Ежедневно 8:00—20:00.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">YNG</a>
+    <div class="nav-links">
+      <a href="#about">О нас</a>
+      <a href="#menu">Меню</a>
+      <a href="#gallery">Интерьер</a>
+      <a href="#info">Контакты</a>
+      <a href="https://yandex.ru/maps/org/yang/147936717429/" target="_blank" class="nav-cta">Маршрут</a>
+    </div>
+    <div class="nav-toggle" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+        Открыты ежедневно 8:00 — 20:00
+      </div>
+      <h1>
+        YNG Coffee
+        <span>Кафе на Спортивной 2/1</span>
+      </h1>
+      <p class="hero-desc">
+        Уютное пространство с приятной музыкой, где можно как позавтракать, так и провести время за деловыми встречами. Зерно от топовых обжарщиков. Вкус насыщенный — как ваши планы. Авторские рецепты.
+      </p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          Смотреть меню
+        </a>
+        <a href="https://yandex.ru/maps/org/yang/147936717429/" target="_blank" class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Как добраться
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="about reveal">
+      <div class="about-text">
+        <div class="section-label">О Блюдах</div>
+        <h2>Пространство, в котором хочется остаться</h2>
+        <p>Минималистичное пространство с пастельными акцентами, где каждая чашка кофе — это маленькое искусство. Кофе, чай, пицца на закваске. </p>
+        <p>Выпечка собственного производства — это отдельная история. Тартин на закваске, круассаны (особенно с лимонным курдом) и миндальное печенье просто тают во рту в сердце Петербурга.</p>
+        <div class="about-stats">
+          <div>
+            <div class="stat-number">8:00</div>
+            <div class="stat-label">Открываемся</div>
+          </div>
+          <div>
+            <div class="stat-number">20:00</div>
+            <div class="stat-label">Закрываемся</div>
+          </div>
+          <div>
+            <div class="stat-number">7</div>
+            <div class="stat-label">Дней в неделю</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-images">
+        <div class="about-img">
+          <img src="https://avatars.mds.yandex.net/get-altay/18005133/2a0000019b326f90e47ee50c5b1f79a0bc93/XXXL" alt="YNG Coffee" onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80'">
+        </div>
+        <div class="about-img">
+          <img src="https://avatars.mds.yandex.net/get-altay/16569030/2a00000197bb0c75169f0fc8d93ecd620d9b/XXXL" alt="YNG Coffee" onerror="this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80'">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="section" id="menu">
+    <div class="menu-section reveal">
+      <div class="section-header">
+        <div class="section-label">Меню</div>
+        <h2 class="section-title">Что мы предлагаем</h2>
+        <p class="section-subtitle">Кофе, чай, пицца на закваске, десерты и специальное меню для детей. Любой кофейный напиток может быть приготовлен без кафеина.</p>
+      </div>
+
+      <div class="menu-tabs">
+        <button class="menu-tab active" onclick="filterMenu('coffee', this)">Кофе</button>
+        <button class="menu-tab" onclick="filterMenu('tea', this)">Чай</button>
+        <button class="menu-tab" onclick="filterMenu('iced', this)">Со льдом</button>
+        <button class="menu-tab" onclick="filterMenu('pizza', this)">Пицца</button>
+        <button class="menu-tab" onclick="filterMenu('dessert', this)">Десерты</button>
+        <button class="menu-tab" onclick="filterMenu('kids', this)">Дети ЯНГ</button>
+      </div>
+
+      <div class="menu-grid" id="menuGrid">
+        <!-- Coffee -->
+        <div class="menu-card" data-category="coffee">
+          <div class="menu-card-header">
+            <h3>Эспрессо</h3>
+            <span class="menu-card-price">от 120 ₽</span>
+          </div>
+          <p>Классический итальянский кофе. Доступен без кофеина.</p>
+        </div>
+        <div class="menu-card" data-category="coffee">
+          <div class="menu-card-header">
+            <h3>Американо</h3>
+            <span class="menu-card-price">от 150 ₽</span>
+          </div>
+          <p>Эспрессо с добавлением горячей воды. Мягкий вкус.</p>
+        </div>
+        <div class="menu-card" data-category="coffee">
+          <div class="menu-card-header">
+            <h3>Капучино</h3>
+            <span class="menu-card-price">от 180 ₽</span>
+          </div>
+          <p>Эспрессо, молоко и нежная молочная пенка. Классика.</p>
+        </div>
+        <div class="menu-card" data-category="coffee">
+          <div class="menu-card-header">
+            <h3>Латте</h3>
+            <span class="menu-card-price">от 190 ₽</span>
+          </div>
+          <p>Мягкий кофе с большим количеством молока.</p>
+        </div>
+        <div class="menu-card" data-category="coffee">
+          <div class="menu-card-header">
+            <h3>Флэт Уайт</h3>
+            <span class="menu-card-price">от 200 ₽</span>
+          </div>
+          <p>Двойной эспрессо с микропенкой. Насыщенный вкус.</p>
+        </div>
+        <div class="menu-card" data-category="coffee">
+          <div class="menu-card-header">
+            <h3>Раф</h3>
+            <span class="menu-card-price">от 220 ₽</span>
+          </div>
+          <p>Кофе со сливками и ванильным сахаром. Нежный и сладкий.</p>
+        </div>
+
+        <!-- Tea -->
+        <div class="menu-card" data-category="tea" style="display:none">
+          <div class="menu-card-header">
+            <h3>Чёрный чай</h3>
+            <span class="menu-card-price">от 120 ₽</span>
+          </div>
+          <p>Классический чёрный чай. Можно с молоком.</p>
+        </div>
+        <div class="menu-card" data-category="tea" style="display:none">
+          <div class="menu-card-header">
+            <h3>Зелёный чай</h3>
+            <span class="menu-card-price">от 120 ₽</span>
+          </div>
+          <p>Свежий и лёгкий зелёный чай.</p>
+        </div>
+        <div class="menu-card" data-category="tea" style="display:none">
+          <div class="menu-card-header">
+            <h3>Травяной чай</h3>
+            <span class="menu-card-price">от 130 ₽</span>
+          </div>
+          <p>Сбор трав и цветов. Без кофеина.</p>
+        </div>
+        <div class="menu-card" data-category="tea" style="display:none">
+          <div class="menu-card-header">
+            <h3>Матча латте</h3>
+            <span class="menu-card-price">от 250 ₽</span>
+          </div>
+          <p>Японский зелёный чай матча с молоком.</p>
+        </div>
+
+        <!-- Iced -->
+        <div class="menu-card" data-category="iced" style="display:none">
+          <div class="menu-card-header">
+            <h3>Айс латте</h3>
+            <span class="menu-card-price">от 220 ₽</span>
+          </div>
+          <p>Охлаждённый латте со льдом. Освежающий.</p>
+          <span class="menu-card-tag tag-iced">Со льдом</span>
+        </div>
+        <div class="menu-card" data-category="iced" style="display:none">
+          <div class="menu-card-header">
+            <h3>Холодный кофе</h3>
+            <span class="menu-card-price">от 200 ₽</span>
+          </div>
+          <p>Заваренный холодным способом. Мягкий и сладкий.</p>
+          <span class="menu-card-tag tag-iced">Со льдом</span>
+        </div>
+        <div class="menu-card" data-category="iced" style="display:none">
+          <div class="menu-card-header">
+            <h3>Лимонад</h3>
+            <span class="menu-card-price">от 180 ₽</span>
+          </div>
+          <p>Домашний лимонад с мятой и лимоном.</p>
+          <span class="menu-card-tag tag-iced">Со льдом</span>
+        </div>
+
+        <!-- Pizza -->
+        <div class="menu-card" data-category="pizza" style="display:none">
+          <div class="menu-card-header">
+            <h3>Маргарита</h3>
+            <span class="menu-card-price">от 450 ₽</span>
+          </div>
+          <p>Томатный соус, моцарелла, базилик. 32 см.</p>
+          <span class="menu-card-tag tag-hot">С 12:00</span>
+        </div>
+        <div class="menu-card" data-category="pizza" style="display:none">
+          <div class="menu-card-header">
+            <h3>Пепперони</h3>
+            <span class="menu-card-price">от 520 ₽</span>
+          </div>
+          <p>Томатный соус, моцарелла, пепперони. 32 см.</p>
+          <span class="menu-card-tag tag-hot">С 12:00</span>
+        </div>
+        <div class="menu-card" data-category="pizza" style="display:none">
+          <div class="menu-card-header">
+            <h3>Веганская пицца</h3>
+            <span class="menu-card-price">от 480 ₽</span>
+          </div>
+          <p>Томатный соус, овощи, веганский сыр. Без молока и яиц.</p>
+          <span class="menu-card-tag tag-vegan">Веган</span>
+        </div>
+
+        <!-- Desserts -->
+        <div class="menu-card" data-category="dessert" style="display:none">
+          <div class="menu-card-header">
+            <h3>Чизкейк</h3>
+            <span class="menu-card-price">от 250 ₽</span>
+          </div>
+          <p>Нежный чизкейк с ягодным соусом.</p>
+          <span class="menu-card-tag tag-sweet">Сладкое</span>
+        </div>
+        <div class="menu-card" data-category="dessert" style="display:none">
+          <div class="menu-card-header">
+            <h3>Тирамису</h3>
+            <span class="menu-card-price">от 280 ₽</span>
+          </div>
+          <p>Классический итальянский десерт с кофе и маскарпоне.</p>
+          <span class="menu-card-tag tag-sweet">Сладкое</span>
+        </div>
+        <div class="menu-card" data-category="dessert" style="display:none">
+          <div class="menu-card-header">
+            <h3>Веганский десерт</h3>
+            <span class="menu-card-price">от 260 ₽</span>
+          </div>
+          <p>Без молока и яиц. Натуральные ингредиенты.</p>
+          <span class="menu-card-tag tag-vegan">Веган</span>
+        </div>
+
+        <!-- Kids -->
+        <div class="menu-card" data-category="kids" style="display:none">
+          <div class="menu-card-header">
+            <h3>Детский латте</h3>
+            <span class="menu-card-price">от 150 ₽</span>
+          </div>
+          <p>Молоко с лёгким вкусом карамели. Без кофеина.</p>
+          <span class="menu-card-tag tag-kids">Детское</span>
+        </div>
+        <div class="menu-card" data-category="kids" style="display:none">
+          <div class="menu-card-header">
+            <h3>Горячий шоколад</h3>
+            <span class="menu-card-price">от 180 ₽</span>
+          </div>
+          <p>Насыщенный горячий шоколад с маршмеллоу.</p>
+          <span class="menu-card-tag tag-kids">Детское</span>
+        </div>
+        <div class="menu-card" data-category="kids" style="display:none">
+          <div class="menu-card-header">
+            <h3>Детская пицца</h3>
+            <span class="menu-card-price">от 350 ₽</span>
+          </div>
+          <p>Маленькая пицца с любимыми начинками.</p>
+          <span class="menu-card-tag tag-kids">Детское</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section" id="gallery">
+    <div class="section-header reveal">
+      <div class="section-label">Интерьер</div>
+      <h2 class="section-title">Наше пространство</h2>
+      <p class="section-subtitle">Светлые стены, пастельные акценты, живые растения и уютная атмосфера для работы и отдыха.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item wide">
+        <img src="https://avatars.mds.yandex.net/get-altay/7742431/2a000001834a57dbaa7c848d4c53fa877d0b/XXXL" alt="Зал YNG Coffee" onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80'">
+        <div class="gallery-overlay"><span>Главный зал</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://avatars.mds.yandex.net/get-altay/4476499/2a000001834a5a769049fc765501b7f3ca6f/XXXL" alt="Барная стойка" onerror="this.src='https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80'">
+        <div class="gallery-overlay"><span>Барная стойка</span></div>
+      </div>
+      <div class="gallery-item tall">
+        <img src="https://avatars.mds.yandex.net/get-altay/6955494/2a000001834a5b11923e6e1924cea51ed7e5/XXXL" alt="Детали интерьера" onerror="this.src='https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600&q=80'">
+        <div class="gallery-overlay"><span>Детали</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://avatars.mds.yandex.net/get-altay/6314780/2a000001834a58c4f65d49b9370808b94efc/XXXL" alt="Кофейная зона" onerror="this.src='https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&q=80'">
+        <div class="gallery-overlay"><span>Кофейная зона</span></div>
+      </div>
+      <div class="gallery-item wide">
+        <img src="https://avatars.mds.yandex.net/get-altay/6446898/2a000001834a590850659ef0af6a30352cdb/XXXL" alt="Панорама" onerror="this.src='https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80'">
+        <div class="gallery-overlay"><span>Панорама зала</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO / CONTACTS -->
+  <section class="section" id="info">
+    <div class="info-section reveal">
+      <div class="info-left">
+        <div class="section-label" style="color: rgba(255,255,255,0.4)">Контакты</div>
+        <h2>Приходите в гости</h2>
+        <p>Мы находимся в современном жилом комплексе на Спортивной улице. Удобная парковка, уютная атмосфера и вкуснейший кофе ждут вас.</p>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4>Адрес</h4>
+            <p>Спортивная 2/1, Санкт-Петербург</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <h4>Часы работы</h4>
+            <p>Каждый день с 8:00 до 20:00</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <h4>Телефон</h4>
+            <p><a class="map-widget-business-contacts-view__main-phone" href="tel:+79219131110">+7 (921) 913-11-10</a></p>
+          </div>
+        </div>
+
+        <a href="https://yandex.ru/maps/org/yang/147936717429/" target="_blank" class="btn btn-primary" style="margin-top: 16px; display: inline-flex;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Построить маршрут
+        </a>
+      </div>
+      <div class="info-map">
+        <iframe src="https://yandex.ru/map-widget/v1/-/CTc6yF3K" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-logo">YNG</div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/yngcoffee/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://t.me/yngcoffee" target="_blank" aria-label="Telegram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-16.5 6.498a2.25 2.25 0 0 0 .126 4.27l3.9 1.21a.75.75 0 0 1 .42.42l1.21 3.9a2.25 2.25 0 0 0 4.27.126l6.498-16.5a2.242 2.242 0 0 0-1.904-2.24z"/></svg>
+      </a>
+      <a href="https://yandex.ru/maps/org/yang/147936717429/" target="_blank" aria-label="Yandex Maps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </a>
+    </div>
+    <p class="footer-copy">© YNG Coffee. 2022 — 2026. Спортивная 2/1, Санкт-Петербург.</p>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Menu filter
+    function filterMenu(category, btn) {
+      document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.menu-card').forEach(card => {
+        card.style.display = card.dataset.category === category ? 'block' : 'none';
+      });
+    }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Mobile menu toggle
+    function toggleMenu() {
+      const links = document.querySelector('.nav-links');
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+      links.style.position = 'absolute';
+      links.style.top = '60px';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.flexDirection = 'column';
+      links.style.background = 'rgba(255,255,255,0.98)';
+      links.style.backdropFilter = 'blur(20px)';
+      links.style.padding = '20px';
+      links.style.gap = '16px';
+      links.style.boxShadow = '0 4px 24px rgba(0,0,0,0.08)';
+    }
+  </script>
+</body>
+</html>
