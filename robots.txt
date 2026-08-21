@@ -1,4 +1,10 @@
 User-agent: *
-Host: artybondar.github.io
+Host: https://artybondar.github.io
+Allow: /
 Sitemap: https://artybondar.github.io/sitemap.xml
-Crawl-delay:4
+Crawl-delay:2
+
+Disallow: /assets/
+Disallow: /images/
+Disallow: /css/
+Disallow: /js/
