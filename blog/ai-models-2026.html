@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Models for Coding 2026 — Benchmarks & Comparison — Arty Bondar</title>
+  <meta name="description" content="A data-driven comparison of AI coding models in 2026: benchmarks, pricing, and real-world performance across use cases." />
+  <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg">
+  <link rel="apple-touch-icon" sizes="120x120" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080808; --surface: #111111; --border: #222222;
+      --accent: #c8ff00; --accent2: #ff5c00; --text: #f2f2f2; --muted: #777;
+      --font-display: 'Syne', sans-serif;
+      --font-serif: 'Instrument Serif', serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-display); overflow-x: hidden; cursor: none; }
+    .cursor { position: fixed; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); mix-blend-mode: difference; }
+    .cursor-ring { position: fixed; width: 36px; height: 36px; border: 1.5px solid rgba(200,255,0,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: transform .1s ease-out; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); background-size: 200px; pointer-events: none; z-index: 1; opacity: .6; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 24px 48px; backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); background: rgba(8,8,8,.85); }
+    .nav-logo { font-family: var(--font-mono); font-size: 13px; letter-spacing: .08em; color: var(--accent); text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+    /* ARTICLE HERO */
+    .article-hero { padding: 160px 48px 80px; position: relative; overflow: hidden; border-bottom: 1px solid var(--border); }
+    .article-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 80% 40%, rgba(200,255,0,.04) 0%, transparent 65%), radial-gradient(ellipse 40% 40% at 10% 80%, rgba(255,92,0,.03) 0%, transparent 60%); }
+    .article-hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); }
+    .article-hero-inner { max-width: 900px; position: relative; z-index: 2; }
+    .breadcrumb { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; transition: color .2s; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb-sep { color: var(--border); }
+    .article-tags { display: flex; gap: 8px; margin-bottom: 24px; }
+    .article-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; padding: 5px 12px; background: rgba(200,255,0,.07); color: var(--accent); border: 1px solid rgba(200,255,0,.15); }
+    .article-title { font-size: clamp(36px, 5.5vw, 72px); font-weight: 800; line-height: 1.0; letter-spacing: -.03em; margin-bottom: 28px; }
+    .article-title em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
+    .article-meta { display: flex; align-items: center; gap: 32px; padding-top: 28px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+    .article-author { display: flex; align-items: center; gap: 14px; }
+    .author-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; color: var(--bg); flex-shrink: 0; }
+    .author-name { font-weight: 600; font-size: 14px; }
+    .author-role { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: .06em; margin-top: 2px; }
+    .meta-divider { width: 1px; height: 36px; background: var(--border); }
+    .meta-item { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: .08em; }
+    .meta-item strong { display: block; color: var(--text); font-size: 12px; margin-bottom: 2px; font-family: var(--font-display); font-weight: 600; }
+
+    /* LAYOUT */
+    .article-layout { display: grid; grid-template-columns: 1fr 280px; gap: 80px; max-width: 1200px; margin: 0 auto; padding: 80px 48px 140px; align-items: start; }
+
+    /* TOC */
+    .toc { position: sticky; top: 100px; }
+    .toc-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .toc-list li a { display: block; font-family: var(--font-mono); font-size: 12px; color: var(--muted); text-decoration: none; padding: 9px 0 9px 14px; border-left: 2px solid var(--border); transition: color .2s, border-color .2s; line-height: 1.4; }
+    .toc-list li a:hover, .toc-list li a.active { color: var(--accent); border-left-color: var(--accent); }
+    .toc-share { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border); }
+    .toc-share p { font-family: var(--font-mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .share-btns { display: flex; flex-direction: column; gap: 8px; }
+    .share-btn { font-family: var(--font-mono); font-size: 11px; padding: 10px 14px; border: 1px solid var(--border); color: var(--muted); text-decoration: none; transition: border-color .2s, color .2s; display: flex; align-items: center; gap: 8px; cursor: pointer; background: none; width: 100%; }
+    .share-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* PROSE */
+    .prose { max-width: 680px; }
+    .prose p { font-family: var(--font-mono); font-size: 15px; line-height: 1.9; color: #aaa; margin-bottom: 28px; }
+    .prose p strong { color: var(--text); font-weight: 500; }
+    .prose h2 { font-size: clamp(26px, 2.5vw, 36px); font-weight: 800; letter-spacing: -.02em; margin: 64px 0 20px; line-height: 1.1; }
+    .prose h2 em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--accent); }
+    .prose h3 { font-size: 18px; font-weight: 700; letter-spacing: -.01em; margin: 36px 0 14px; color: var(--text); }
+    .prose .lead { font-family: var(--font-serif); font-style: italic; font-size: clamp(18px, 2vw, 22px); line-height: 1.65; color: var(--muted); margin-bottom: 48px; border-left: 2px solid var(--accent); padding-left: 24px; }
+    .prose blockquote { margin: 40px 0; padding: 28px 32px; background: var(--surface); border-left: 3px solid var(--accent); }
+    .prose blockquote p { color: var(--text); font-size: 16px; margin: 0; }
+    .prose blockquote cite { display: block; font-family: var(--font-mono); font-style: normal; font-size: 11px; color: var(--muted); letter-spacing: .08em; margin-top: 12px; }
+    .prose ul { margin: 0 0 28px 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .prose ul li { font-family: var(--font-mono); font-size: 14px; line-height: 1.7; color: #aaa; padding-left: 20px; position: relative; }
+    .prose ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 12px; }
+    .prose ul li strong { color: var(--text); font-weight: 500; }
+    .prose hr { border: none; border-top: 1px solid var(--border); margin: 56px 0; }
+
+    /* TABLES */
+    .bench-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-family: var(--font-mono); font-size: 13px; }
+    .bench-table thead th { text-align: left; padding: 12px 10px; border-bottom: 2px solid var(--accent); color: var(--text); font-weight: 600; letter-spacing: .06em; }
+    .bench-table tbody td { padding: 12px 10px; border-bottom: 1px solid var(--border); color: #aaa; }
+    .bench-table tbody tr:hover td { color: var(--text); background: rgba(200,255,0,.03); }
+    .bench-table .highlight { color: var(--accent); font-weight: 500; }
+    .bench-table .orange { color: var(--accent2); }
+    .bench-table .muted { color: var(--muted); }
+
+    /* BAR CHART */
+    .chart-group { margin: 32px 0; }
+    .chart-row { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+    .chart-label { font-family: var(--font-mono); font-size: 12px; color: var(--text); width: 130px; flex-shrink: 0; letter-spacing: .04em; }
+    .chart-bar-wrap { flex: 1; background: var(--surface); height: 10px; border-radius: 0; overflow: hidden; }
+    .chart-bar { height: 100%; border-radius: 0; background: var(--accent); transition: width 1.2s cubic-bezier(.16,1,.3,1); width: 0; }
+    .chart-bar.orange { background: var(--accent2); }
+    .chart-bar.white { background: rgba(242,242,242,.4); }
+    .chart-pct { font-family: var(--font-mono); font-size: 11px; color: var(--muted); width: 44px; flex-shrink: 0; text-align: right; }
+
+    /* STAT GRID */
+    .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin: 40px 0; }
+    .stat-card { background: var(--surface); padding: 28px 24px; border: 1px solid var(--border); }
+    .stat-card .num { font-size: 40px; font-weight: 800; letter-spacing: -.03em; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+    .stat-card .lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); line-height: 1.5; }
+
+    /* CALLOUT */
+    .callout { margin: 40px 0; padding: 28px 32px; border: 1px solid rgba(200,255,0,.2); background: rgba(200,255,0,.03); }
+    .callout-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .callout p { font-family: var(--font-mono); font-size: 14px; line-height: 1.7; color: #aaa; margin: 0; }
+    .callout p strong { color: var(--text); }
+
+    /* CONCLUSION */
+    .conclusion { margin-top: 64px; padding: 48px; background: var(--surface); border: 1px solid var(--border); }
+    .conclusion h2 { font-size: 24px; font-weight: 800; letter-spacing: -.02em; margin-bottom: 20px; }
+    .conclusion p { font-family: var(--font-mono); font-size: 14px; line-height: 1.8; color: #aaa; margin-bottom: 16px; }
+    .conclusion p:last-child { margin-bottom: 0; }
+
+    /* BACK */
+    .back-btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 32px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-decoration: none; border: 1px solid var(--border); padding: 12px 20px; transition: border-color .2s, color .2s; }
+    .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer { padding: 32px 48px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
+    footer p { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: .08em; }
+    footer .accent { color: var(--accent); }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .article-hero { padding: 130px 24px 60px; }
+      .article-layout { grid-template-columns: 1fr; gap: 60px; padding: 60px 24px 100px; }
+      .toc { position: static; order: -1; }
+      .stat-grid { grid-template-columns: 1fr; }
+      .bench-table { font-size: 11px; }
+      .bench-table thead th, .bench-table tbody td { padding: 8px 6px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+      .chart-label { width: 90px; font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">AB.dev</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../index.html#experience">Experience</a></li>
+      <li><a href="index.html" class="active">Blog</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ARTICLE HERO -->
+  <header class="article-hero">
+    <div class="article-hero-bg"></div>
+    <div class="article-hero-grid"></div>
+    <div class="article-hero-inner">
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <a href="index.html">Blog</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Article 002</span>
+      </div>
+      <div class="article-tags">
+        <span class="article-tag">AI</span>
+        <span class="article-tag">Benchmarks</span>
+        <span class="article-tag">2026</span>
+      </div>
+      <h1 class="article-title">AI Models for Coding 2026:<br /><em>Benchmarks, Prices</em><br />&amp; Real-World Performance</h1>
+      <div class="article-meta">
+        <div class="article-author">
+          <div class="author-avatar">AB</div>
+          <div>
+            <div class="author-name">Arty Bondar</div>
+            <div class="author-role">Fullstack Developer</div>
+          </div>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item"><strong>August 2026</strong>Published</div>
+        <div class="meta-divider"></div>
+        <div class="meta-item"><strong>9 min</strong>Read time</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- LAYOUT -->
+  <div class="article-layout">
+    <!-- MAIN CONTENT -->
+    <article class="article-content">
+      <div class="prose reveal">
+
+        <p class="lead">The AI coding landscape in 2026 is a different beast from 2024. The gap between frontier models and the rest is real — but so is the gap between benchmark scores and what actually matters in your daily work. Here's what the data says.</p>
+
+        <p>I've been using AI coding tools daily since 2023. I've watched GitHub Copilot go from novelty to necessity, watched Claude Code appear and immediately take market share, and watched the benchmarks inflate to the point where a 95% score on SWE-bench Verified is now the minimum entry ticket for a serious model.</p>
+
+        <p>This article is a data-driven comparison of the current state — not marketing, not hype. Just numbers, prices, and honest advice.</p>
+
+        <hr />
+
+        <!-- ==================== SECTION 1: LANDSCAPE ==================== -->
+        <h2 id="landscape">The <em>Landscape</em></h2>
+
+        <p>As of August 2026, the coding model leaderboard is clearer than it's ever been. <strong>Claude Mythos 5</strong> leads at 79.9% on BenchLM's composite coding score, but it's gated — not available via public API [citation:7]. The practical top spot belongs to <strong>Claude Fable 5</strong> at 79.6%, closely followed by <strong>GPT-5.6 Sol</strong> at 78.0% [citation:1][citation:7].</p>
+
+        <p>But here's the thing: a two-point gap on a composite benchmark is <strong>statistical noise</strong> for most real-world tasks. What actually matters is the combination of benchmark performance, price, and workflow fit.</p>
+
+        <div class="callout">
+          <div class="callout-label">// Key insight</div>
+          <p>According to BenchLM, Claude Opus 5 (96%) and Claude Fable 5 (95%) are <strong>statistically tied</strong> on SWE-bench Verified — a one-point gap there is noise. The differences that actually separate them are SWE-bench Pro (79.2% vs 80%), CursorBench (70.0% vs 70.5%), and <strong>price</strong> — Opus 5 costs twice as much as Fable 5 [citation:1].</p>
+        </div>
+
+        <p>Among open-weight models, <strong>Kimi K3</strong> is the strongest challenger at 77.0% composite, while <strong>GLM-5.2</strong> (64.3%) leads the truly open tier. The gap between proprietary and open has reopened — Mythos and Fable sit near 80, while the best open models are around 64–65 [citation:7][citation:5].</p>
+
+        <!-- ==================== SECTION 2: BENCHMARKS ==================== -->
+        <h2 id="benchmarks">Benchmark <em>Deep Dive</em></h2>
+
+        <p>The table below shows the top models across the three key coding benchmarks, with pricing. <strong>SWE-bench Verified</strong> tests if a model can fix a real GitHub issue with hidden tests — it's the industry standard. <strong>SWE-bench Pro</strong> is harder: multi-file, enterprise-grade issues [citation:1][citation:5].</p>
+
+        <div class="bench-table-wrap">
+          <table class="bench-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>SWE-bench V</th>
+                <th>SWE-bench Pro</th>
+                <th>Price (in/out per M)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="highlight">Claude Fable 5</span></td><td><span class="highlight">95.0%</span></td><td><span class="highlight">80.0%</span></td><td>$5 / $25</td></tr>
+              <tr><td>Claude Opus 5</td><td>96.0%</td><td>79.2%</td><td>$10 / $50</td></tr>
+              <tr><td><span class="orange">GPT-5.6 Sol</span></td><td><span class="orange">96.2%</span></td><td>64.6%</td><td>$5 / $30</td></tr>
+              <tr><td>Claude Sonnet 5</td><td>85.2%</td><td>63.2%</td><td><span class="highlight">$2 / $10</span></td></tr>
+              <tr><td>Kimi K3</td><td>93.4%</td><td>—</td><td>$3 / $15</td></tr>
+              <tr><td>Gemini 3 Pro</td><td>54.2%</td><td>46.1%</td><td>$2 / $12</td></tr>
+              <tr><td><span class="muted">DeepSeek V4 Pro</span></td><td>~70%</td><td>—</td><td><span class="highlight">$0.44 / $0.87</span></td></tr>
+              <tr><td><span class="muted">Claude Haiku 4.5</span></td><td>~78%</td><td>39.5%</td><td><span class="highlight">$1 / $5</span></td></tr>
+            </tbody>
+          </table>
+          <p style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-top:-12px;margin-bottom:24px;">
+            Sources: BenchLM, Scale SEAL, Vals AI [citation:1][citation:5][citation:9].
+          </p>
+        </div>
+
+        <p>A few things stand out:</p>
+
+        <ul>
+          <li><strong>Claude dominates the hard benchmarks.</strong> Fable 5 and Opus 5 are the only models consistently above 79% on SWE-bench Pro — the true test of repository-scale work [citation:1][citation:9].</li>
+          <li><strong>GPT-5.6 Sol is the SWE-bench Verified king.</strong> At 96.2% on Vals AI's independent harness, it's the current record holder — but the margin over Fable (95.0%) is within the noise [citation:9][citation:1].</li>
+          <li><strong>Open-source is catching up, but not there yet.</strong> Kimi K3 at 93.4% Verified is impressive, but its SWE-bench Pro score hasn't been published. GLM-5.2 at 64.3% composite lags the closed leaders by 15+ points [citation:5][citation:7].</li>
+        </ul>
+
+        <!-- ==================== SECTION 3: PRICE TO PERFORMANCE ==================== -->
+        <h2 id="price">Price-to-<em>Performance</em></h2>
+
+        <p>Benchmarks are only half the story. The other half is cost. If you're running agent loops that burn millions of tokens per day, the price-per-million-output suddenly matters a lot more than a 2% benchmark edge.</p>
+
+        <p>The chart below shows the <strong>output cost per SWE-bench Pro point</strong> — i.e., how much you pay for each percentage point of solving ability. Lower is better.</p>
+
+        <div class="chart-group" id="priceChart">
+          <div class="chart-row"><span class="chart-label">Claude Haiku 4.5</span><div class="chart-bar-wrap"><div class="chart-bar orange" data-w="100"></div></div><span class="chart-pct">$0.13</span></div>
+          <div class="chart-row"><span class="chart-label">Claude Opus 4.6</span><div class="chart-bar-wrap"><div class="chart-bar" data-w="30"></div></div><span class="chart-pct">$0.48</span></div>
+          <div class="chart-row"><span class="chart-label">Gemini 3.1 Pro</span><div class="chart-bar-wrap"><div class="chart-bar white" data-w="55"></div></div><span class="chart-pct">$0.26</span></div>
+          <div class="chart-row"><span class="chart-label">gpt-5.4 (xHigh)</span><div class="chart-bar-wrap"><div class="chart-bar" data-w="57"></div></div><span class="chart-pct">$0.25</span></div>
+        </div>
+        <p style="font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-top:-8px;margin-bottom:32px;">
+          Data: Scale SEAL leaderboard, official output prices. Lower $ per point = better cost-efficiency [citation:9].
+        </p>
+
+        <p>The takeaway is clear: <strong>Haiku 4.5 is the value king</strong> at $0.13 per point. It solves almost 40% of SWE-bench Pro tasks at a fraction of the cost of the flagship models. If your work is high-volume and bounded (autocomplete, lint-fix bots, parallel sub-agents), Haiku is the smart pick [citation:12].</p>
+
+        <p><strong>DeepSeek V4</strong> is the open-weight alternative. At $0.44 input / $0.87 output per million tokens, it's the cheapest serious coding model by a wide margin. It trails the leaders by 15–20 points on SWE-bench Verified, but for background jobs and high-volume agents, the economics are hard to ignore [citation:12].</p>
+
+        <!-- ==================== SECTION 4: USE CASES ==================== -->
+        <h2 id="usecases">By <em>Use Case</em></h2>
+
+        <p>No single model wins every task. Here's the practical breakdown [citation:1][citation:6][citation:10]:</p>
+
+        <div class="stat-grid">
+          <div class="stat-card"><div class="num">⚡</div><div class="lbl"><strong>Autocomplete / Inline edits</strong><br>Gemini 3.6 Flash ($1.50/$7.50) or GPT-5.6 Luna ($0.20/$1.20). Speed and price matter more than benchmark deltas.</div></div>
+          <div class="stat-card"><div class="num">🔧</div><div class="lbl"><strong>Refactoring / Single-file surgery</strong><br>Claude Sonnet 5 ($2/$10). Precision-bound work — conservatism is exactly what you want.</div></div>
+          <div class="stat-card"><div class="num">🏗</div><div class="lbl"><strong>Cross-file / Repo-scale</strong><br>Claude Fable 5 or Opus 5. This is where SWE-bench Pro separates the leaders from the pack.</div></div>
+        </div>
+
+        <p><strong>GPT-5.6 Sol</strong> is the go-to for terminal automation and multimodal debugging (screenshot-driven fixes). <strong>Kimi K3</strong> is the strongest open-weight option and leads the Frontend Code Arena — if you're building UI, it's worth a look [citation:9][citation:1].</p>
+
+        <!-- ==================== SECTION 5: AGENTS ==================== -->
+        <h2 id="agents">The Agents <em>Layer</em></h2>
+
+        <p>Which model you pick matters, but the agent harness it runs through matters almost as much. Here's the state of play:</p>
+
+        <ul>
+          <li><strong>Claude Code</strong> — the deepest programmable harness. Sub-agents, hooks, Dynamic Workflows. Runs in terminal, VS Code, JetBrains, and CI. The most-starred repo in the category (141k GitHub stars). <strong>Best for large codebases and long-horizon agentic work</strong> [citation:4][citation:6][citation:11].</li>
+          <li><strong>Cursor</strong> — the fastest in-editor experience. Composer 2.5 with visual diffs is unmatched for multi-file changes without leaving your IDE. <strong>Best for speed inside the editor</strong> [citation:2][citation:6][citation:10].</li>
+          <li><strong>GitHub Copilot</strong> — the enterprise default. Native PR review, issue-to-PR cloud agent. <strong>Best if your team lives in GitHub</strong> [citation:2][citation:4][citation:10].</li>
+          <li><strong>OpenAI Codex</strong> — strongest on autonomous cloud work. Network-isolated sandboxes, Terminal-Bench 2.1 leader at 89.5%. <strong>Best for security-conscious teams</strong> [citation:2][citation:11].</li>
+          <li><strong>Cline &amp; OpenCode</strong> — open-source, provider-agnostic. Bring your own model, run locally or on any API. <strong>Best for vendor independence and cost control</strong> [citation:4][citation:8].</li>
+        </ul>
+
+        <div class="callout">
+          <div class="callout-label">// Adoption snapshot</div>
+          <p>According to the 2025 Stack Overflow survey, Claude Code reached <strong>40.8% adoption</strong> among developers using AI coding agents — up from launch to mainstream in under a year [citation:4]. GitHub Copilot still leads at 67.9%, but the momentum is clearly with the terminal-native agent model.</p>
+        </div>
+
+        <!-- ==================== SECTION 6: MY TAKE ==================== -->
+        <h2 id="take">My <em>Take</em></h2>
+
+        <p>After spending time with all these models, here's what I've settled on:</p>
+
+        <p><strong>Claude Sonnet 5</strong> is my daily driver for most work. At $2/$10 per million, it's the best quality-to-price ratio in the Claude family [citation:1]. It's precise, conservative (which is a feature for refactoring), and rarely hallucinates in ways that cost me time.</p>
+
+        <p><strong>Claude Fable 5</strong> is what I reach for when the task is genuinely hard — cross-file refactoring, debugging a subtle race condition, or working in an unfamiliar codebase. The 80% SWE-bench Pro score is real [citation:1].</p>
+
+        <p><strong>DeepSeek V4 Flash</strong> is my fallback for high-volume work — autocomplete, test generation, lint-fix bots. At $0.14/$0.28 and a 1M-token context, it's practically free [citation:12].</p>
+
+        <p>The biggest shift I've seen in 2026 is the <strong>move from "which model is best" to "which harness best fits my workflow"</strong> [citation:6]. The models have converged at the top; the agent layer is now the differentiator.</p>
+
+        <div class="conclusion">
+          <h2>Summary</h2>
+          <p><strong>Claude Fable 5</strong> and <strong>GPT-5.6 Sol</strong> are the practical leaders — both around 95%+ on SWE-bench Verified, with Fable ahead on the harder Pro benchmark [citation:1][citation:9].</p>
+          <p><strong>Claude Sonnet 5</strong> is the value champion at $2/$10 for precision-bound work. <strong>Claude Haiku 4.5</strong> is the cheapest per-point at $0.13 per SWE-bench Pro point [citation:9].</p>
+          <p><strong>DeepSeek V4</strong> is the open-source price king for high-volume loops. <strong>Kimi K3</strong> is the strongest open-weight model at 93.4% Verified.</p>
+          <p>The agent harness matters as much as the model. <strong>Claude Code</strong> leads on depth, <strong>Cursor</strong> on speed, <strong>Copilot</strong> on integration, <strong>Codex</strong> on security [citation:6][citation:11].</p>
+          <p style="margin-top:20px;">The developers who thrive in 2026 are the ones who know which tool to reach for when — and don't let the benchmark hype drive their decision.</p>
+        </div>
+
+        <a href="index.html" class="back-btn">← Back to Blog</a>
+
+      </div><!-- .prose -->
+    </article>
+
+    <!-- SIDEBAR TOC -->
+    <aside class="toc reveal">
+      <p class="toc-label">// Contents</p>
+      <ul class="toc-list">
+        <li><a href="#landscape" id="toc-landscape">Landscape</a></li>
+        <li><a href="#benchmarks" id="toc-benchmarks">Benchmarks</a></li>
+        <li><a href="#price" id="toc-price">Price-to-Performance</a></li>
+        <li><a href="#usecases" id="toc-usecases">By Use Case</a></li>
+        <li><a href="#agents" id="toc-agents">Agents</a></li>
+        <li><a href="#take" id="toc-take">My Take</a></li>
+      </ul>
+      <div class="toc-share">
+        <p>// Share</p>
+        <div class="share-btns">
+          <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='✓ Copied!'">
+            🔗 Copy link
+          </button>
+          <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https://artybondar.github.io/blog/ai-models-2026.html" target="_blank">in LinkedIn</a>
+          <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://artybondar.github.io/blog/ai-models-2026.html&text=AI Models for Coding 2026: Benchmarks, Prices & Real-World Performance — by @artybondar" target="_blank">𝕏 Twitter</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <p>© 2026 <span class="accent">Arty Bondar</span>.</p>
+    <p><a href="index.html" style="color:var(--muted);text-decoration:none;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;">← Blog</a></p>
+  </footer>
+
+  <script>
+    // Cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+    (function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+
+    // Reveal
+    const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.08});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Animate price chart bars when visible
+    const chartObs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.querySelectorAll('.chart-bar').forEach(bar=>{
+            const w = bar.dataset.w;
+            setTimeout(()=>{bar.style.width = w + '%';}, 100);
+          });
+          chartObs.unobserve(e.target);
+        }
+      });
+    },{threshold:.3});
+    const pc=document.getElementById('priceChart');
+    if(pc) chartObs.observe(pc);
+
+    // Active TOC on scroll
+    const sections = ['landscape','benchmarks','price','usecases','agents','take'];
+    const tocLinks = sections.map(id=>document.getElementById('toc-'+id));
+    const sectionEls = sections.map(id=>document.getElementById(id));
+    window.addEventListener('scroll',()=>{
+      let current=0;
+      sectionEls.forEach((el,i)=>{if(el&&el.getBoundingClientRect().top<160)current=i;});
+      tocLinks.forEach((l,i)=>{if(l)l.classList.toggle('active',i===current);});
+    });
+  </script>
+</body>
+</html>
