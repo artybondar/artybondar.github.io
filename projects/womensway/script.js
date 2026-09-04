@@ -1,5 +1,38 @@
-// ---------- path draws itself + marker moves as you scroll ----------
-(function () {
+// =============================================
+// 1. МОБИЛЬНОЕ МЕНЮ
+// =============================================
+(function() {
+  const navToggle = document.getElementById('navToggle');
+  const primaryNav = document.getElementById('primaryNav');
+
+  if (navToggle && primaryNav) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = primaryNav.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Закрываем меню при клике на ссылку
+    primaryNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        primaryNav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Закрываем меню при клике вне его
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.site-header')) {
+        primaryNav.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+})();
+
+// =============================================
+// 2. PATH — АНИМАЦИЯ ДОРОЖКИ И МАРКЕР
+// =============================================
+(function() {
   const track = document.getElementById('pathTrack');
   const curve = document.getElementById('pathCurve');
   const marker = document.getElementById('pathMarker');
@@ -26,7 +59,7 @@
     const rect = track.getBoundingClientRect();
     const vh = window.innerHeight;
 
-    // progress: 0 when track top hits ~80% of viewport, 1 when track bottom hits ~20% of viewport
+    // progress: 0 когда верх трека на ~85% вьюпорта, 1 когда низ трека на ~15% вьюпорта
     const start = vh * 0.85;
     const end = vh * 0.15;
     const total = rect.height + (start - end);
@@ -35,6 +68,24 @@
 
     curve.style.strokeDashoffset = String(length * (1 - progress));
     marker.style.top = (progress * rect.height) + 'px';
+
+    // Подсвечиваем активный шаг
+    const pathStops = document.querySelectorAll('.path-stop');
+    if (pathStops.length) {
+      const activeIndex = Math.min(
+        Math.floor(progress * pathStops.length),
+        pathStops.length - 1
+      );
+      pathStops.forEach((stop, index) => {
+        if (index === activeIndex) {
+          stop.style.borderColor = 'var(--berry)';
+          stop.style.boxShadow = '0 4px 20px rgba(156,79,99,0.12)';
+        } else {
+          stop.style.borderColor = 'var(--line)';
+          stop.style.boxShadow = 'none';
+        }
+      });
+    }
   }
 
   update();
@@ -42,8 +93,10 @@
   window.addEventListener('resize', update);
 })();
 
-// ---------- gallery lightbox ----------
-(function () {
+// =============================================
+// 3. ГАЛЕРЕЯ — ЛАЙТБОКС
+// =============================================
+(function() {
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const closeBtn = document.getElementById('lightboxClose');
@@ -52,13 +105,13 @@
 
   function open(src, alt) {
     lightboxImg.src = src;
-    lightboxImg.alt = alt;
-    lightbox.hidden = false;
+    lightboxImg.alt = alt || '';
+    lightbox.removeAttribute('hidden');
     document.body.style.overflow = 'hidden';
   }
 
   function close() {
-    lightbox.hidden = true;
+    lightbox.setAttribute('hidden', '');
     lightboxImg.src = '';
     document.body.style.overflow = '';
   }
@@ -70,11 +123,17 @@
     });
   });
 
-  closeBtn.addEventListener('click', close);
+  if (closeBtn) {
+    closeBtn.addEventListener('click', close);
+  }
+
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) close();
   });
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !lightbox.hidden) close();
+    if (e.key === 'Escape' && !lightbox.hasAttribute('hidden')) {
+      close();
+    }
   });
 })();
