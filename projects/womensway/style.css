@@ -93,6 +93,7 @@ a { color: inherit; text-decoration: none; }
 .section-light .faq-list { border-color: var(--dark-line); }
 .section-light .faq-item h3 { color: var(--dark-ink); }
 .section-light .faq-item p { color: var(--dark-ink-dim); }
+.section-light .faq-item li { color: var(--dark-ink-dim); }
 .section-light .faq-list { border-color: var(--dark-line); }
 
 .section-light .channel-card { background: rgba(36,30,26,0.03); border-color: var(--dark-line-strong); }
@@ -178,7 +179,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ---------- shared ---------- */
 .section-inner { max-width: var(--container); margin: 0 auto; padding: 120px var(--edge); }
-.section-title { font-family: var(--display); font-weight: 500; font-size: clamp(32px, 4.2vw, 50px); line-height: 1.14; margin: 0 0 44px; color: var(--ink); }
+.section-title { font-family: var(--display); font-weight: 500; font-size: clamp(32px, 4.2vw, 50px); line-height: 1.14; margin: 0 0 20px; color: var(--ink); }
 .kicker { font-size: 14px; color: var(--berry); font-weight: 500; margin: 0 0 14px; font-family: var(--display); font-style: italic; }
 
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-deep); outline-offset: 3px; }
@@ -204,7 +205,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-deep); o
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .enter { opacity: 1; animation: none; }
-  .parallax, .kenburns { transform: none !important; animation: none !important; }
+  .parallax, .kenburns, .marquee-track, .filmstrip-track, .review-track { transform: none !important; animation: none !important; }
 }
 
 /* ---------- buttons ---------- */
@@ -231,7 +232,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-deep); o
 }
 
 .hero-media { position: relative; overflow: hidden; grid-column: 1; grid-row: 1; }
-.hero-bg { position: absolute; inset: -6%; background-size: cover; background-position: center 22%; }
+.hero-bg { 
+  position: absolute; inset: -6%; background-size: cover; background-position: center 22%;
+  background-image: url('images/hero-portrait.jpg');
+}
 .hero-media-veil {
   position: absolute; inset: 0;
   background:
@@ -282,10 +286,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-deep); o
   display: grid; grid-template-columns: repeat(3, 1fr);
   background: var(--slate-1); border-top: 1px solid var(--line);
 }
-.hero-stat { display: flex; align-items: baseline; gap: 10px; padding: 22px clamp(20px, 3vw, 40px); border-left: 1px solid var(--line); }
+.hero-stat { display: flex; align-items: baseline; gap: 10px; padding: 22px clamp(20px, 2vw, 40px); border-left: 1px solid var(--line); }
 .hero-stat:first-child { border-left: none; }
 .hero-stat .mark { color: var(--gold); font-size: 14px; }
-.hero-stat .val { font-family: var(--display); font-size: clamp(22px, 2.6vw, 30px); color: var(--ink); }
+.hero-stat .val { font-family: var(--display); font-size: clamp(26px, 2.8vw, 40px); color: var(--ink); }
 .hero-stat .cap { font-size: 12.5px; color: var(--ink-faint); letter-spacing: 0.01em; }
 
 .scroll-cue { position: absolute; bottom: 96px; left: clamp(28px, 4vw, 64px); z-index: 3; display: flex; align-items: center; gap: 10px; }
@@ -297,7 +301,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-deep); o
   .hero { grid-template-columns: 1fr; grid-template-rows: auto auto auto; }
   .hero-media { grid-column: 1; grid-row: 1; height: 56vh; }
   .hero-media-veil { background: linear-gradient(180deg, transparent 50%, var(--slate-1) 100%); }
-  .hero-panel { grid-column: 1; grid-row: 2; padding: 40px var(--edge) 32px; text-align: center; align-items: center; }
+  .hero-panel { grid-column: 1; grid-row: 2; padding: 20px var(--edge) 32px; text-align: center; align-items: center; }
   .hero-actions { justify-content: center; }
   .hero-stats { grid-column: 1; grid-row: 3; grid-template-columns: 1fr; }
   .hero-stat { border-left: none; border-top: 1px solid var(--line); justify-content: center; }
@@ -316,9 +320,19 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-deep); o
 .split { position: relative; display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
 .split-content { display: flex; flex-direction: column; justify-content: center; padding: 90px clamp(28px, 5vw, 96px); }
 .split-media { position: relative; overflow: hidden; min-height: 320px; }
-.split-bg { position: absolute; inset: -6%; background-size: cover; background-position: center; }
+.split-bg { 
+  position: absolute; inset: -6%; background-size: cover; background-position: center;
+}
+.split-bg[data-speed="0.15"] {
+  background-image: url('images/portrait.jpg');
+}
 .split-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,16,22,0) 60%, rgba(14,16,22,0.25) 100%); }
 .split-veil.light { background: linear-gradient(180deg, rgba(36,30,26,0) 60%, rgba(36,30,26,0.18) 100%); }
+
+/* картинка для секции ВОПРОСЫ */
+#path .split-bg[data-speed="0.15"] {
+  background-image: url('images/gallery-5.jpg');
+}
 
 @media (max-width: 900px) {
   .split { grid-template-columns: 1fr; }
@@ -365,7 +379,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-deep); o
 
 /* ---------- quote-break (тёмный full-bleed, контрастный) ---------- */
 .quote-break { position: relative; min-height: 78vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 60px var(--edge); overflow: hidden; }
-.quote-bg { position: absolute; inset: -8%; background-size: cover; background-position: center; will-change: transform; }
+.quote-bg { 
+  position: absolute; inset: -8%; background-size: cover; background-position: center;
+  background-image: url('images/gallery-3.jpg');
+  will-change: transform; 
+}
 .quote-veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,16,30,0.6), rgba(20,16,30,0.85)); }
 .quote-glow {
   position: absolute; z-index: 1; top: 50%; left: 50%; width: 60vw; height: 60vw; max-width: 700px; max-height: 700px;
@@ -422,14 +440,41 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-deep); o
 @media (max-width: 900px) { .values-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .values-grid { grid-template-columns: 1fr; } }
 
-/* ---------- cases ---------- */
-.cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.case-card { border: 1px solid var(--dark-line); border-radius: 18px; padding: 30px 26px; background: rgba(36,30,26,0.015); display: flex; flex-direction: column; gap: 16px; }
-.case-row { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--dark-ink); padding-top: 14px; border-top: 1px solid var(--dark-line); }
-.case-row:first-child { padding-top: 0; border-top: none; font-family: var(--display); font-style: italic; font-size: 18px; }
-.case-row span { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dark-ink-faint); margin-bottom: 6px; font-family: var(--body); font-style: normal; }
-.case-row.result { color: var(--accent-deep); font-weight: 500; }
-@media (max-width: 900px) { .cases-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
+/* ---------- отзывы / истории роста (лента с автопрокруткой) ---------- */
+.reviews-inner { text-align: center; padding-bottom: 50px; }
+.reviews-inner p { max-width: 52ch; margin: 0 auto; }
+
+.review-strip {
+  overflow: hidden; padding: 20px 0 110px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.review-track {
+  display: flex; align-items: center; width: max-content; gap: 26px;
+  animation: reviewscroll 40s linear infinite;
+}
+.review-strip:hover .review-track { animation-play-state: paused; }
+@keyframes reviewscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.review-card {
+  position: relative; flex: 0 0 auto; width: 260px;
+  padding: 0; border: 1px solid var(--dark-line-strong); background: var(--cream-1);
+  border-radius: 16px; overflow: hidden; cursor: pointer;
+  box-shadow: 0 10px 26px rgba(36,30,26,0.1);
+  transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease, z-index 0s;
+}
+.review-card:hover {
+  transform: scale(1.14) translateY(-6px);
+  box-shadow: 0 26px 56px rgba(156,79,99,0.25);
+  z-index: 3;
+}
+.review-card img { width: 100%; height: auto; display: block; }
+
+@media (max-width: 640px) {
+  .review-card { width: 190px; }
+  .review-strip { padding-bottom: 80px; }
+  .review-card:hover { transform: scale(1.08) translateY(-4px); }
+}
 
 /* ---------- solutions / форматы (тёмный акцент) ---------- */
 .solutions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }

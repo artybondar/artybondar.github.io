@@ -130,7 +130,7 @@
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const closeBtn = document.getElementById('lightboxClose');
-  const items = document.querySelectorAll('.film-item');
+  const items = document.querySelectorAll('.film-item, .review-card');
   if (!lightbox || !lightboxImg || !items.length) return;
 
   function open(src, alt) {
