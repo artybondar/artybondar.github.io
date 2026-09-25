@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zhenskiyput.github.io/sitemap.xml
+Disallow: /cgi-bin/
+Disallow: /tmp/
+
+Sitemap: https://prozarabotat.ru/sitemap.xml
+
+Host: https://prozarabotat.ru

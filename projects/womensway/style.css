@@ -331,7 +331,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-deep); o
 
 /* картинка для секции ВОПРОСЫ */
 #path .split-bg[data-speed="0.15"] {
-  background-image: url('images/gallery-5.jpg');
+  background-image: url('images/gallery-13.jpg');
 }
 
 @media (max-width: 900px) {
@@ -431,6 +431,68 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-deep); o
 }
 .lightbox-close:hover { background: rgba(244,241,236,0.12); }
 
+/* ---------- модалка заявки ---------- */
+.lead-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(14,16,22,0.72);
+  backdrop-filter: blur(6px);
+  padding: 24px;
+}
+.lead-overlay[hidden] { display: none; }
+
+.lead-modal {
+  position: relative;
+  width: 100%; max-width: 420px;
+  background: linear-gradient(180deg, var(--cream-1), var(--cream-2));
+  border-radius: 22px;
+  padding: 40px 34px 32px;
+  box-shadow: 0 40px 90px rgba(0,0,0,0.45);
+  animation: leadIn .35s cubic-bezier(.16,1,.3,1);
+}
+@keyframes leadIn { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+.lead-modal h3 {
+  font-family: var(--display); font-weight: 500; font-size: 28px;
+  margin: 0 0 8px; color: var(--dark-ink);
+}
+.lead-sub { font-size: 14px; color: var(--dark-ink-dim); margin: 0 0 26px; }
+
+.lead-close {
+  position: absolute; top: 16px; right: 16px; width: 36px; height: 36px;
+  border-radius: 50%; border: 1px solid var(--dark-line-strong); background: transparent;
+  color: var(--dark-ink); font-size: 22px; line-height: 1; cursor: pointer;
+  transition: background .2s ease;
+}
+.lead-close:hover { background: rgba(36,30,26,0.06); }
+
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+.lead-field { margin-bottom: 10px; text-align: left; }
+.lead-field label { display: block; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--dark-ink-faint); font-weight: 600; margin-bottom: 8px; }
+.lead-field input {
+  width: 100%; padding: 13px 16px; border-radius: 12px;
+  border: 1px solid var(--dark-line-strong); background: rgba(255,255,255,0.5);
+  font-family: var(--body); font-size: 15px; color: var(--dark-ink);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.lead-field input:focus { outline: none; border-color: var(--accent-deep); box-shadow: 0 0 0 3px rgba(156,79,99,0.12); }
+.lead-field input.invalid { border-color: #b3413c; }
+
+.lead-error { display: block; min-height: 16px; font-size: 12.5px; color: #b3413c; margin-top: 6px; }
+
+.lead-submit { width: 100%; justify-content: center; margin-top: 6px; }
+.lead-submit:disabled { opacity: 0.6; cursor: default; transform: none; }
+
+.lead-status { min-height: 20px; text-align: center; font-size: 13.5px; margin: 14px 0 0; color: var(--dark-ink-dim); }
+.lead-status.success { color: #3f7a4e; font-weight: 600; }
+.lead-status.error { color: #b3413c; font-weight: 600; }
+
+@media (max-width: 480px) {
+  .lead-modal { padding: 32px 24px 26px; }
+  .lead-modal h3 { font-size: 24px; }
+}
+
 /* ---------- values grid ---------- */
 .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .value-card { border: 1px solid var(--dark-line); border-radius: 18px; padding: 30px 24px; background: rgba(36,30,26,0.015); }
@@ -489,8 +551,39 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-deep); o
 .solution-card h3 { font-family: var(--display); font-size: clamp(24px, 2.2vw, 29px); font-weight: 500; margin: 0 0 14px; color: var(--ink); }
 .solution-card p { color: var(--ink-dim); font-size: 15px; line-height: 1.6; margin: 0 0 24px; flex: 1; }
 .solution-price { font-family: var(--display); font-size: 26px; color: var(--gold); margin: 0 0 18px; }
-.solution-card-btn { font-weight: 600; font-size: 14px; color: var(--berry); transition: transform .3s ease; align-self: flex-start; }
-.solution-card-btn:hover { transform: translateX(4px); }
+.solution-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 24px;
+  border-radius: 40px;
+  border: 1px solid var(--berry);
+  background: transparent;
+  color: var(--berry);
+  font-weight: 600;
+  font-size: 14px;
+  font-family: var(--body);
+  cursor: pointer;
+  transition: all .3s ease;
+  align-self: flex-start;
+  margin-top: 8px;
+}
+.solution-card-btn:hover {
+  background: var(--berry);
+  color: #211018;
+  transform: translateY(-2px);
+}
+
+/* для тёмной темы секции */
+.section-dark .solution-card-btn {
+  border-color: var(--berry);
+  color: var(--berry);
+}
+
+.section-dark .solution-card-btn:hover {
+  background: var(--berry);
+  color: #211018;
+}
 
 /* ---------- faq ---------- */
 .faq .section-inner { max-width: 800px; }
@@ -540,4 +633,233 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-deep); o
   .footer-brand, .footer-links-group { align-items: center; }
   .footer-links { flex-direction: row; flex-wrap: wrap; justify-content: center; }
   .footer-bottom { flex-direction: column; text-align: center; padding-left: var(--edge); padding-right: var(--edge); }
+}
+
+/* ---------- чекбокс согласия в модалке ---------- */
+.lead-checkbox {
+  margin-bottom: 20px;
+}
+
+.checkbox-label {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  cursor: pointer !important;
+  font-size: 13px !important;
+  color: var(--dark-ink-dim) !important;
+  line-height: 1.4 !important;
+  text-align: left !important;
+  position: relative !important;
+}
+
+/* Скрываем нативный чекбокс */
+.checkbox-label input[type="checkbox"] {
+  position: absolute !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Кастомный чекбокс — КВАДРАТ */
+.checkbox-label .checkmark {
+  flex-shrink: 0 !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  border: 2px solid var(--dark-line-strong) !important;
+  border-radius: 4px !important;
+  background: #ffffff !important;
+  transition: all .2s ease !important;
+  display: block !important;
+  margin-top: 1px !important;
+  position: relative !important;
+}
+
+/* Hover */
+.checkbox-label:hover .checkmark {
+  border-color: var(--accent-deep) !important;
+}
+
+/* Checked */
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+  background: var(--accent-deep) !important;
+  border-color: var(--accent-deep) !important;
+}
+
+/* Галочка */
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 5px !important;
+  top: 1px !important;
+  width: 7px !important;
+  height: 12px !important;
+  border: solid white !important;
+  border-width: 0 2px 2px 0 !important;
+  transform: rotate(45deg) !important;
+}
+
+/* Текст справа от чекбокса */
+.checkbox-label .consent-text {
+  flex: 1 !important;
+  line-height: 1.4 !important;
+  font-size: 10px !important;
+  color: var(--dark-ink-dim) !important;
+}
+
+.checkbox-label .consent-text a {
+  color: var(--accent-deep) !important;
+  text-decoration: underline !important;
+}
+
+.checkbox-label .consent-text a:hover {
+  opacity: 0.7 !important;
+}
+
+/* Ошибка */
+.lead-checkbox .lead-error {
+  margin-top: 4px !important;
+  padding-left: 32px !important;
+  text-align: left !important;
+}
+
+/* Ошибка для чекбокса */
+.checkbox-label input[type="checkbox"].invalid + .checkmark {
+  border-color: #b3413c !important;
+}
+
+/* Адаптив */
+@media (max-width: 480px) {
+  .checkbox-label {
+    font-size: 12px !important;
+    gap: 10px !important;
+  }
+  .checkbox-label .checkmark {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+  }
+  .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    left: 4px !important;
+    top: 0px !important;
+    width: 6px !important;
+    height: 10px !important;
+  }
+  .lead-checkbox .lead-error {
+    padding-left: 28px !important;
+  }
+}
+
+/* ============ COOKIE ============ */
+.cookie-consent {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  padding: 18px clamp(16px, 4vw, 48px);
+  background: rgba(20, 18, 16, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cookie-consent.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cookie-consent__inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.cookie-consent__text {
+  flex: 1 1 420px;
+  margin: 0;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.cookie-consent__text a {
+  color: #e8d9b5;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.cookie-consent__text a:hover {
+  color: #fff;
+}
+
+.cookie-consent__actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.cookie-consent__accept,
+.cookie-consent__decline {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.cookie-consent__accept {
+  background: #e8d9b5;
+  color: #1a1816;
+  border: 1px solid #e8d9b5;
+}
+
+.cookie-consent__accept:hover {
+  background: #fff;
+  border-color: #fff;
+}
+
+.cookie-consent__decline {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.cookie-consent__decline:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 640px) {
+  .cookie-consent__inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .cookie-consent__actions {
+    width: 100%;
+  }
+
+  .cookie-consent__accept,
+  .cookie-consent__decline {
+    flex: 1;
+  }
 }

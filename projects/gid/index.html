@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Виктория Тишкова — языки, Петербург и арт-терапия</title>
+  <meta name="description" content="Репетитор английского и немецкого, авторские экскурсии по Санкт-Петербургу и арт-терапия с психологическим подходом. Бережно, глубоко, по-настоящему." />
+  <meta property="og:title" content="Виктория Тишкова — языки, Петербург и арт-терапия" />
+  <meta property="og:description" content="Английский и немецкий, прогулки по Петербургу и арт-терапия — в одних бережных руках." />
+  <meta property="og:image" content="assets/hero.webp" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23964E60'/%3E%3Cpath d='M16 5v14M7 21c3-2.5 6-2.5 9 0s6 2.5 9 0' stroke='%23F7F1EC' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/hero.webp" />
+  <link rel="stylesheet" href="dist/styles.css" />
+  <script>
+    (function () {
+      var d = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', d);
+    })();
+  </script>
+</head>
+<body class="overflow-x-hidden">
+  <!-- Custom cursor -->
+  <div class="cursor-ring is-hidden" aria-hidden="true"><span>Смотреть</span></div>
+  <div class="cursor-dot is-hidden" aria-hidden="true"></div>
+
+  <!-- Preloader -->
+  <div class="preloader fixed inset-0 z-[100] bg-ink text-bg flex items-end justify-between p-6 md:p-12 pointer-events-none" aria-hidden="true">
+    <span class="font-display italic text-3xl md:text-5xl">Слова · Город · Цвет</span>
+    <span class="text-xs tracking-[0.3em] uppercase">Санкт-Петербург</span>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header fixed inset-x-0 top-0 z-50 text-[#F7F1EC]">
+    <div class="container flex items-center justify-between h-20">
+      <a href="#top" class="flex items-center gap-3" aria-label="Виктория Тишкова — на главную">
+        <svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <circle cx="20" cy="20" r="18.5" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M20 6.5v17" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M20 6.5l-1.6 5h3.2z" fill="currentColor"/>
+          <path d="M8.5 27c3.8-3 7.7-3 11.5 0s7.7 3 11.5 0" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <span class="font-display text-xl sm:text-2xl leading-none tracking-wide whitespace-nowrap">Виктория <em class="not-italic opacity-60">Тишкова</em></span>
+      </a>
+      <nav class="hidden lg:flex items-center gap-10 text-sm" aria-label="Основная навигация">
+        <a class="link-u" href="#languages">Языки</a>
+        <a class="link-u" href="#tours">Экскурсии</a>
+        <a class="link-u" href="#art">Арт-терапия</a>
+        <a class="link-u" href="#about">Обо мне</a>
+        <a class="link-u" href="#faq">Вопросы</a>
+      </nav>
+      <div class="flex items-center gap-2 md:gap-4">
+        <button data-theme-toggle class="grid place-items-center w-11 h-11 rounded-full hover:bg-white/10" aria-label="Переключить тему">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="#contact" class="hidden md:inline-flex items-center rounded-full border border-current px-5 py-2.5 text-sm hover:bg-[#F7F1EC] hover:text-[#2E2328] header-cta">Записаться</a>
+        <button class="lg:hidden grid place-items-center w-11 h-11" data-menu-open aria-label="Открыть меню" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h18M3 16h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu fixed inset-0 z-[60] bg-ink text-bg flex flex-col" id="mobile-menu" aria-hidden="true">
+    <div class="container flex items-center justify-between h-20">
+      <span class="font-display text-2xl">Меню</span>
+      <button data-menu-close class="grid place-items-center w-11 h-11" aria-label="Закрыть меню">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+    </div>
+    <nav class="container flex-1 flex flex-col justify-center gap-4 font-display text-5xl" aria-label="Мобильная навигация">
+      <a href="#languages" data-menu-link>Языки</a>
+      <a href="#tours" data-menu-link>Экскурсии</a>
+      <a href="#art" data-menu-link>Арт-терапия</a>
+      <a href="#about" data-menu-link>Обо мне</a>
+      <a href="#contact" data-menu-link class="italic text-rose">Записаться</a>
+    </nav>
+    <p class="container pb-10 text-sm opacity-60">Санкт-Петербург · онлайн по всему миру</p>
+  </div>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="relative h-[100svh] min-h-[640px] overflow-hidden bg-ink" aria-label="Приветствие">
+      <div class="hero-frame absolute inset-0 overflow-hidden">
+        <div class="hero-img absolute inset-0" data-hero-parallax>
+          <div class="hero-img-inner absolute inset-[-4%]" data-hero-mouse>
+            <img src="assets/hero.webp" alt="Нева на рассвете: Зимний дворец и шпиль Петропавловской крепости в розовой дымке" class="w-full h-full object-cover object-[60%_50%]" fetchpriority="high" />
+          </div>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#2E2328]/80 via-[#2E2328]/20 to-[#2E2328]/30"></div>
+        <div class="absolute inset-0 grain overflow-hidden"></div>
+      </div>
+
+      <div class="relative z-10 h-full container flex flex-col justify-end pb-10 md:pb-16 text-[#F7F1EC]" data-hero-content>
+        <p class="eyebrow !text-[#F7F1EC]/80 mb-6 fade-up-load" style="transition-delay:1.5s">Виктория Тишкова · Санкт-Петербург</p>
+        <h1 class="font-display text-hero font-normal">
+          <span class="line-mask"><span style="transition-delay:1.1s">Слова,</span></span>
+          <span class="line-mask pl-[8vw]"><span style="transition-delay:1.22s"><em>город</em> и</span></span>
+          <span class="line-mask"><span style="transition-delay:1.34s">цвет.</span></span>
+        </h1>
+        <div class="mt-8 md:mt-10 grid md:grid-cols-12 gap-6 items-end">
+          <p class="md:col-span-5 text-base md:text-lg text-[#F7F1EC]/85 max-w-md fade-up-load" style="transition-delay:1.6s">
+            Английский и немецкий, прогулки по Петербургу и арт-терапия — три пути, чтобы услышать мир и себя чуть яснее.
+          </p>
+          <div class="md:col-span-7 flex flex-wrap gap-3 md:justify-end fade-up-load" style="transition-delay:1.75s">
+            <a href="#services" class="btn bg-[#F7F1EC] text-[#2E2328] hover:bg-blush">Выбрать направление
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+            </a>
+            <a href="#contact" class="btn border border-[#F7F1EC]/60 hover:bg-[#F7F1EC]/10">Первая встреча бесплатно</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 z-10 hidden md:flex flex-col items-center gap-4 text-[#F7F1EC]/70 fade-up-load" style="transition-delay:2s">
+        <span class="text-[11px] tracking-[0.3em] uppercase [writing-mode:vertical-rl]">Листайте</span>
+        <span class="w-px h-16 bg-[#F7F1EC]/40 relative overflow-hidden"><span class="absolute inset-x-0 top-0 h-1/2 bg-[#F7F1EC] animate-[scrollcue_2s_ease-in-out_infinite]"></span></span>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="border-y border-line overflow-hidden py-6 bg-bg" aria-hidden="true">
+      <div class="marquee-track flex w-max gap-12 font-display italic text-3xl md:text-5xl text-ink/80 whitespace-nowrap">
+        <span>English</span><span class="text-rose">✦</span><span>Deutsch</span><span class="text-rose">✦</span><span>Прогулки по Петербургу</span><span class="text-rose">✦</span><span>Арт-терапия</span><span class="text-rose">✦</span><span>Бережно и глубоко</span><span class="text-rose">✦</span>
+        <span>English</span><span class="text-rose">✦</span><span>Deutsch</span><span class="text-rose">✦</span><span>Прогулки по Петербургу</span><span class="text-rose">✦</span><span>Арт-терапия</span><span class="text-rose">✦</span><span>Бережно и глубоко</span><span class="text-rose">✦</span>
+      </div>
+    </div>
+
+    <!-- Intro / services overview -->
+    <section id="services" class="container py-24 md:py-36">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+        <div class="lg:col-span-4 reveal">
+          <p class="eyebrow mb-6">Направления</p>
+          <h2 class="font-display text-display">Три ремесла — <em class="text-rose">одно внимание</em></h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6 reveal">
+          <p class="text-lg md:text-xl leading-relaxed text-ink/80">
+            Я соединяю то, что люблю больше всего: живой язык, город, в котором выросла, и искусство как способ говорить о сложном без слов. Каждая встреча — индивидуальная, в спокойном темпе и с уважением к вашей истории.
+          </p>
+          <div class="mt-12 grid sm:grid-cols-3 border-t border-line">
+            <a href="#languages" class="group py-6 sm:pr-6 border-b sm:border-b-0 sm:border-r border-line" data-cursor="link">
+              <span class="text-xs text-muted">01</span>
+              <span class="block font-display text-2xl mt-2 group-hover:text-rose transition-colors">Языки</span>
+              <span class="block text-sm text-muted mt-1">английский и немецкий</span>
+            </a>
+            <a href="#tours" class="group py-6 sm:px-6 border-b sm:border-b-0 sm:border-r border-line">
+              <span class="text-xs text-muted">02</span>
+              <span class="block font-display text-2xl mt-2 group-hover:text-rose transition-colors">Экскурсии</span>
+              <span class="block text-sm text-muted mt-1">авторские прогулки</span>
+            </a>
+            <a href="#art" class="group py-6 sm:pl-6">
+              <span class="text-xs text-muted">03</span>
+              <span class="block font-display text-2xl mt-2 group-hover:text-rose transition-colors">Арт-терапия</span>
+              <span class="block text-sm text-muted mt-1">психологический подход</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service 01 -->
+    <section id="languages" class="relative bg-surface/60 py-24 md:py-32 overflow-hidden">
+      <div class="container grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div class="lg:col-span-6">
+          <figure class="svc-media reveal-img relative aspect-[4/5] rounded-[2rem] overflow-hidden" data-cursor="view" data-cursor-label="English · Deutsch">
+            <img src="assets/languages.webp" alt="Раскрытая книга, тетрадь со словами на английском и немецком, чай и сухие розы" class="w-full h-full object-cover" loading="lazy" data-parallax="-6" />
+          </figure>
+        </div>
+        <div class="lg:col-span-5 lg:col-start-8">
+          <div class="reveal">
+            <p class="eyebrow mb-4"><span class="text-rose">01</span> — Репетитор</p>
+            <h2 class="font-display text-display">Английский <br /><em>&amp; немецкий</em></h2>
+            <p class="mt-6 text-base md:text-lg text-ink/80 leading-relaxed">Занятия, на которых язык перестаёт быть предметом и становится голосом. Разговорная практика, подготовка к экзаменам и переезду, деловая лексика — под ваши цели и темп.</p>
+          </div>
+          <ul class="mt-8 divide-y divide-line border-y border-line reveal">
+            <li class="flex justify-between gap-4 py-4"><span>Разговорный язык и произношение</span><span class="text-muted text-sm">A1 — C1</span></li>
+            <li class="flex justify-between gap-4 py-4"><span>IELTS, TOEFL, Goethe-Zertifikat</span><span class="text-muted text-sm">подготовка</span></li>
+            <li class="flex justify-between gap-4 py-4"><span>Для работы и релокации</span><span class="text-muted text-sm">бизнес-курс</span></li>
+          </ul>
+          <div class="mt-8 flex flex-wrap items-center gap-6 reveal">
+            <a href="#contact" data-service="languages" class="btn-primary">Пробный урок
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <p class="text-sm text-muted">от <span class="font-display text-2xl text-ink">1 500 ₽</span> / 45 мин · онлайн и очно</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service 02 -->
+    <section id="tours" class="relative py-24 md:py-32 overflow-hidden">
+      <div class="container grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div class="lg:col-span-5 order-2 lg:order-1">
+          <div class="reveal">
+            <p class="eyebrow mb-4"><span class="text-rose">02</span> — Гид</p>
+            <h2 class="font-display text-display">Петербург, <br /><em>который шепчет</em></h2>
+            <p class="mt-6 text-base md:text-lg text-ink/80 leading-relaxed">Авторские прогулки без спешки и заученных текстов: дворы-колодцы, литературные адреса, мосты на закате и истории людей, которые жили за этими окнами. Можно на русском, английском или немецком.</p>
+          </div>
+          <div class="mt-8 grid grid-cols-2 gap-4 reveal">
+            <div class="rounded-2xl border border-line p-5"><p class="font-display text-3xl">3 часа</p><p class="text-sm text-muted mt-1">обзорная экскурсия</p></div>
+            <div class="rounded-2xl border border-line p-5"><p class="font-display text-3xl">от 5 000 ₽</p><p class="text-sm text-muted mt-1">за экскурсию</p></div>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-2 reveal">
+            <span class="tag">Белые ночи</span><span class="tag">Достоевский и Гоголь</span><span class="tag">Модерн Петроградки</span><span class="tag">Крыши и дворы</span>
+          </div>
+          <div class="mt-8 flex flex-wrap items-center gap-6 reveal">
+            <a href="#contact" data-service="tours" class="btn-primary">Выбрать маршрут
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <p class="text-sm text-muted">от <span class="font-display text-2xl text-ink">5 000 ₽</span> / обзорная, 3 ч</p>
+          </div>
+        </div>
+        <div class="lg:col-span-6 lg:col-start-7 order-1 lg:order-2">
+          <figure class="svc-media reveal-img relative aspect-[4/5] rounded-[2rem] overflow-hidden" data-cursor="view" data-cursor-label="Маршруты">
+            <img src="assets/tours.webp" alt="Канал Петербурга с чугунным мостом и розовыми фасадами на закате" class="w-full h-full object-cover" loading="lazy" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full-bleed quote -->
+    <section class="relative py-28 md:py-44 bg-ink text-bg overflow-hidden">
+      <div class="absolute inset-0 opacity-25">
+        <img src="assets/hero.webp" alt="" class="w-full h-[130%] object-cover" loading="lazy" data-parallax="-12" />
+      </div>
+      <div class="relative container max-w-5xl text-center reveal">
+        <p class="font-display text-3xl md:text-6xl leading-tight italic">«Каждый новый язык — это новое окно, через которое видишь мир. А рисунок — окно внутрь себя».</p>
+        <p class="mt-8 eyebrow !text-bg/60">Философия студии</p>
+      </div>
+    </section>
+
+    <!-- Service 03 -->
+    <section id="art" class="relative bg-surface/60 py-24 md:py-32 overflow-hidden">
+      <div class="container grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div class="lg:col-span-6">
+          <figure class="svc-media reveal-img relative aspect-[4/5] rounded-[2rem] overflow-hidden" data-cursor="view" data-cursor-label="Арт-терапия">
+            <img src="assets/art.webp" alt="Акварель в розово-шалфейных тонах, кисти в стеклянной банке и пастель" class="w-full h-full object-cover" loading="lazy" />
+          </figure>
+        </div>
+        <div class="lg:col-span-5 lg:col-start-8">
+          <div class="reveal">
+            <p class="eyebrow mb-4"><span class="text-rose">03</span> — Психология</p>
+            <h2 class="font-display text-display">Арт-терапия: <br /><em>говорить цветом</em></h2>
+            <p class="mt-6 text-base md:text-lg text-ink/80 leading-relaxed">Бережная работа с тревогой, выгоранием и эмоциональными состояниями через рисунок, коллаж и метафорические карты. Не нужно уметь рисовать — важен процесс и то, что он открывает.</p>
+          </div>
+          <ol class="mt-8 space-y-5 reveal">
+            <li class="flex gap-5"><span class="font-display text-2xl text-rose w-8 shrink-0">i.</span><div><p class="font-medium">Знакомство и запрос</p><p class="text-sm text-muted mt-1">Спокойно обсуждаем, с чем вы пришли и чего хотите.</p></div></li>
+            <li class="flex gap-5"><span class="font-display text-2xl text-rose w-8 shrink-0">ii.</span><div><p class="font-medium">Творческий процесс</p><p class="text-sm text-muted mt-1">Краски, глина, коллаж — материал подбираем вместе.</p></div></li>
+            <li class="flex gap-5"><span class="font-display text-2xl text-rose w-8 shrink-0">iii.</span><div><p class="font-medium">Осмысление</p><p class="text-sm text-muted mt-1">Разговор о том, что проявилось, и что с этим делать дальше.</p></div></li>
+          </ol>
+          <div class="mt-8 flex flex-wrap items-center gap-6 reveal">
+            <a href="#contact" data-service="art" class="btn-primary">Записаться на сессию
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <p class="text-sm text-muted">от <span class="font-display text-2xl text-ink">2 000 ₽</span> / 60 мин</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="container py-24 md:py-36">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div class="lg:col-span-5 relative pb-16 sm:pb-20 pr-10 sm:pr-16">
+          <figure class="svc-media reveal-img relative aspect-[4/5] rounded-t-full overflow-hidden max-w-md" data-cursor="view" data-cursor-label="Привет">
+            <img src="assets/viktoria-1.webp" alt="Виктория Тишкова — портрет в терракотовой рубашке" class="w-full h-full object-cover object-[50%_30%]" loading="lazy" />
+          </figure>
+          <div class="absolute right-0 bottom-0 w-40 sm:w-52 lg:w-56">
+            <figure class="svc-media reveal-img aspect-square rounded-full overflow-hidden ring-8 ring-bg" data-cursor="view" data-cursor-label="Виктория">
+              <img src="assets/viktoria-3.webp" alt="Виктория Тишкова — чёрно-белый портрет" class="w-full h-full object-cover" loading="lazy" />
+            </figure>
+          </div>
+          <p class="absolute left-0 bottom-2 font-display italic text-xl text-muted hidden sm:block">Виктория Тишкова</p>
+        </div>
+        <div class="lg:col-span-6 lg:col-start-7">
+          <div class="reveal">
+            <p class="eyebrow mb-6">Обо мне</p>
+            <h2 class="font-display text-display">Меня зовут Виктория. <em class="text-rose">Я слушаю</em> — на трёх языках.</h2>
+            <p class="mt-6 text-base md:text-lg text-ink/80 leading-relaxed">Преподаю английский и немецкий, провожу экскурсии по Санкт-Петербургу и занимаюсь арт-терапией. Верю, что обучение, путешествие и терапия держатся на одном — на доверии и внимании к человеку.</p>
+          </div>
+          <dl class="mt-12 grid grid-cols-3 gap-6 border-t border-line pt-8 reveal">
+            <div><dt class="text-sm text-muted">урок языка</dt><dd class="font-display text-4xl md:text-6xl mt-1">45<span class="text-xl md:text-2xl"> мин</span></dd></div>
+            <div><dt class="text-sm text-muted">экскурсия</dt><dd class="font-display text-4xl md:text-6xl mt-1">3<span class="text-xl md:text-2xl"> ч</span></dd></div>
+            <div><dt class="text-sm text-muted">арт-сессия</dt><dd class="font-display text-4xl md:text-6xl mt-1">60<span class="text-xl md:text-2xl"> мин</span></dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="container py-24 md:py-32">
+      <div class="grid lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-4 reveal">
+          <p class="eyebrow mb-6">Вопросы</p>
+          <h2 class="font-display text-display">Коротко <em>о важном</em></h2>
+        </div>
+        <div class="lg:col-span-7 lg:col-start-6 border-t border-line reveal">
+          <details class="group border-b border-line py-6">
+            <summary class="flex items-center justify-between gap-6 text-lg font-medium">Как проходит первая встреча?<span class="faq-icon text-2xl text-rose transition-transform duration-500">+</span></summary>
+            <p class="mt-4 text-muted leading-relaxed">Это бесплатное знакомство на 20–30 минут онлайн: обсуждаем ваши цели, уровень или запрос, и я предлагаю формат, который подойдёт именно вам.</p>
+          </details>
+          <details class="group border-b border-line py-6">
+            <summary class="flex items-center justify-between gap-6 text-lg font-medium">Можно заниматься онлайн из другой страны?<span class="faq-icon text-2xl text-rose transition-transform duration-500">+</span></summary>
+            <p class="mt-4 text-muted leading-relaxed">Да, языковые занятия и арт-терапевтические сессии проходят онлайн в Zoom или Telegram. Экскурсии — очно в Санкт-Петербурге.</p>
+          </details>
+          <details class="group border-b border-line py-6">
+            <summary class="flex items-center justify-between gap-6 text-lg font-medium">Нужно ли уметь рисовать для арт-терапии?<span class="faq-icon text-2xl text-rose transition-transform duration-500">+</span></summary>
+            <p class="mt-4 text-muted leading-relaxed">Совсем нет. Мы не оцениваем результат — работаем с процессом, ощущениями и смыслами. Все материалы я предоставляю.</p>
+          </details>
+          <details class="group border-b border-line py-6">
+            <summary class="flex items-center justify-between gap-6 text-lg font-medium">Проводите ли вы экскурсии на иностранных языках?<span class="faq-icon text-2xl text-rose transition-transform duration-500">+</span></summary>
+            <p class="mt-4 text-muted leading-relaxed">Да, на английском и немецком — это отличный вариант и для гостей города, и для тех, кто хочет попрактиковать язык в живой среде.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="relative bg-ink text-bg py-24 md:py-32 overflow-hidden">
+      <div class="absolute -right-40 -top-40 w-[36rem] h-[36rem] rounded-full bg-rose/25 blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-40 bottom-0 w-[28rem] h-[28rem] rounded-full bg-sage/20 blur-3xl pointer-events-none"></div>
+      <div class="relative container grid lg:grid-cols-12 gap-12 lg:gap-16">
+        <div class="lg:col-span-5 reveal">
+          <p class="eyebrow !text-bg/60 mb-6">Запись</p>
+          <h2 class="font-display text-display">Начнём <em class="text-blush">с разговора</em></h2>
+          <div class="mt-8 flex items-center gap-4">
+            <img src="assets/viktoria-2.webp" alt="Виктория Тишкова у цветущей сирени" class="w-24 h-24 rounded-full object-cover object-[35%_20%] ring-2 ring-blush/50" loading="lazy" />
+            <p class="text-sm text-bg/70">Виктория Тишкова<br /><span class="text-bg/50">отвечу лично</span></p>
+          </div>
+          <p class="mt-6 text-bg/70 max-w-md">Оставьте заявку — я отвечу в течение дня и предложу удобное время для бесплатной встречи-знакомства.</p>
+          <div class="mt-10 space-y-3 text-lg">
+            <a href="https://t.me/VikKa_80" target="_blank" rel="noopener" class="link-u block w-fit">Telegram · @VikKa_80</a>
+            <a href="tel:+79500272650" class="link-u block w-fit">+7 950 027-26-50</a>
+            <p class="text-bg/60 text-sm pt-2">Санкт-Петербург</p>
+          </div>
+        </div>
+        <form class="lg:col-span-6 lg:col-start-7 reveal" id="contact-form" novalidate>
+          <fieldset>
+            <legend class="text-sm text-bg/60 mb-4">Что вам интересно?</legend>
+            <div class="flex flex-wrap gap-3" role="radiogroup">
+              <label class="cursor-pointer"><input type="radio" name="service" value="languages" class="peer sr-only" checked /><span class="inline-block rounded-full border border-bg/30 px-5 py-2.5 text-sm peer-checked:bg-bg peer-checked:text-ink peer-focus-visible:ring-2 peer-focus-visible:ring-rose transition-colors">Языки</span></label>
+              <label class="cursor-pointer"><input type="radio" name="service" value="tours" class="peer sr-only" /><span class="inline-block rounded-full border border-bg/30 px-5 py-2.5 text-sm peer-checked:bg-bg peer-checked:text-ink peer-focus-visible:ring-2 peer-focus-visible:ring-rose transition-colors">Экскурсия</span></label>
+              <label class="cursor-pointer"><input type="radio" name="service" value="art" class="peer sr-only" /><span class="inline-block rounded-full border border-bg/30 px-5 py-2.5 text-sm peer-checked:bg-bg peer-checked:text-ink peer-focus-visible:ring-2 peer-focus-visible:ring-rose transition-colors">Арт-терапия</span></label>
+            </div>
+          </fieldset>
+          <div class="mt-10 grid sm:grid-cols-2 gap-8">
+            <label class="block"><span class="text-sm text-bg/60">Имя</span><input required name="name" type="text" autocomplete="name" class="field !text-bg !border-bg/25 focus:!border-blush placeholder:!text-bg/40" placeholder="Как к вам обращаться" /></label>
+            <label class="block"><span class="text-sm text-bg/60">Телефон или e-mail</span><input required name="contact" type="text" autocomplete="email" class="field !text-bg !border-bg/25 focus:!border-blush placeholder:!text-bg/40" placeholder="Для ответа" /></label>
+          </div>
+          <label class="block mt-8"><span class="text-sm text-bg/60">Сообщение</span><textarea name="message" rows="3" class="field !text-bg !border-bg/25 focus:!border-blush resize-none" placeholder="Пара слов о целях или пожеланиях"></textarea></label>
+          <div class="mt-10 flex flex-wrap items-center gap-6">
+            <button type="submit" class="btn bg-bg text-ink hover:bg-blush">Отправить заявку
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </button>
+            <p class="text-sm text-bg/60" id="form-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-ink text-bg/60 border-t border-bg/10">
+    <div class="container py-10 flex flex-col md:flex-row gap-6 justify-between items-start md:items-center text-sm">
+      <p class="font-display text-3xl md:text-4xl text-bg">Виктория <em>Тишкова</em></p>
+      <div class="flex gap-6"><a class="link-u" href="https://t.me/VikKa_80" target="_blank" rel="noopener">Telegram</a><a class="link-u" href="https://wa.me/79500272650" target="_blank" rel="noopener">WhatsApp</a><a class="link-u" href="tel:+79500272650">+7 950 027-26-50</a></div>
+      <p>© 2026 · Санкт-Петербург</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://perplexity.localhost","http://localhost:1420","http://127.0.0.1:1420","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>
