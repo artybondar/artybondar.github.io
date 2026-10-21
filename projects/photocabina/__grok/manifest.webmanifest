@@ -1,0 +1,17 @@
+{
+  "name": "Кабинка — фотобудка",
+  "short_name": "Кабинка",
+  "description": "Живая фотобудка с фильтрами и локальной лентой снимков.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#141210",
+  "theme_color": "#141210",
+  "icons": [
+    {
+      "src": "./icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
