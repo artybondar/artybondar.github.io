@@ -1,7 +1,7 @@
 {
-  "name": "Кабинка — фотобудка",
-  "short_name": "Кабинка",
-  "description": "Живая фотобудка с фильтрами и локальной лентой снимков.",
+  "name": "PhotoCab",
+  "short_name": "PhotoCab",
+  "description": "PhotoCab photo booth with filters and a local photo gallery.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
